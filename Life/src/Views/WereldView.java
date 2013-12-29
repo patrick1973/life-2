@@ -27,23 +27,13 @@ public class WereldView extends javax.swing.JPanel implements Observer{
         initComponents();
         this.setBackground(Color.blue);
         
-         leefgebied_links = new JPanel(true);
-        leefgebied_rechts = new JPanel(true);
+        leefgebied_links = new JPanel(true);
         leefgebied_links.setVisible(true);
         leefgebied_links.setBackground(Color.gray);
         
-         leefgebied_rechts.setVisible(true);
+        leefgebied_rechts = new JPanel(true);
+        leefgebied_rechts.setVisible(true);
         leefgebied_rechts.setBackground(Color.gray);
-//        leefgebied_links = new JPanel(true);
-//        leefgebied_links.setVisible(true);
-//        leefgebied_links.setBackground(Color.gray);
-//        
-//        leefgebied_rechts = new JPanel(true);
-//        leefgebied_rechts.setVisible(true);
-//        leefgebied_rechts.setBackground(Color.gray);
-//        
-//        this.add(leefgebied_links);
-//        this.add(leefgebied_rechts);  
     }
 
     /**
@@ -55,29 +45,18 @@ public class WereldView extends javax.swing.JPanel implements Observer{
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-
-        jTextField1.setText("jTextField1");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(447, Short.MAX_VALUE)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(397, 397, 397))
+            .addGap(0, 903, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(114, 114, 114)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(251, Short.MAX_VALUE))
+            .addGap(0, 385, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
     @Override
