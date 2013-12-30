@@ -6,6 +6,8 @@
 
 package GUI_algemeen;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author patje
@@ -29,29 +31,57 @@ public class instellingenPlant extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jTextFieldVoedingsWaarde = new javax.swing.JTextField();
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("Initiële voedingswaarde");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(177, 177, 177)
-                .addComponent(jLabel1)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jTextFieldVoedingsWaarde, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 152, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(107, 107, 107)
-                .addComponent(jLabel1)
-                .addContainerGap(179, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFieldVoedingsWaarde, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(269, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextFieldVoedingsWaarde;
     // End of variables declaration//GEN-END:variables
+
+    public int getVoedingsWaarde()
+    {
+        try
+        {
+            int voedingswaarde = Integer.valueOf(this.jTextFieldVoedingsWaarde.getText());
+            if (voedingswaarde >0 )
+                return voedingswaarde;
+            else
+                return -1;
+        }
+         catch (NumberFormatException ex)
+        {
+           JOptionPane.showMessageDialog(null,"U moet alle velden juist invullen : " + ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);  
+            return -1; 
+        }
+    }
+    public void setVoedingsWaarde(int voedingsWaarde)
+    {
+        this.jTextFieldVoedingsWaarde.setText(""+ voedingsWaarde);
+    }
 }
