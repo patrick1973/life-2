@@ -8,7 +8,9 @@ package Factories;
  *
  * @author Bart Janisse
  */
- public enum Beesten 
- {
-     OMNIVOOR, HERBIVOOR, CARNIVOOR, NONIVOOR; 
- }
+class Richting extends Models.Richting {
+
+    public Richting() {
+    }
+    
+}
