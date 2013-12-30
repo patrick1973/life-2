@@ -5,6 +5,7 @@
 package Views;
 
 import Controllers.WereldController;
+import GUI_algemeen.SimulatieGegevensDialog;
 
 /**
  *
@@ -169,7 +170,15 @@ public class KnoppenPaneel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnPauzeSimulationActionPerformed
 
     private void btnNewSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewSimulationActionPerformed
-        controller.cmdNieuweSimulatie();
+        SimulatieGegevensDialog simulatieGegevens = new SimulatieGegevensDialog(null, true);
+        simulatieGegevens.setTitle("Simulatie Gegevens");
+        simulatieGegevens.setVisible(true);
+        
+        // Nieuwe simulatie wordt alleen aangemaakt indien er op de oke knop gedrukt wordt in de invoer dialog
+        if (simulatieGegevens.getReturnStatus() == 1 )
+        {
+            controller.cmdNieuweSimulatie();
+        }
     }//GEN-LAST:event_btnNewSimulationActionPerformed
 
     private void jSliderSimulationSpeedCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jSliderSimulationSpeedCaretPositionChanged
