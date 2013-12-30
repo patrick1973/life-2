@@ -12,16 +12,9 @@ import Models.Plant;
  */
 public class HerbivoorGedrag implements IGedrag {
 
-    String type;
-    
-    public HerbivoorGedrag(String type) {
   
-        this.type = type;
-    }
-
-    @Override
-    public String getType() {
-        return type;
+    public HerbivoorGedrag() {
+  
     }
 
     @Override

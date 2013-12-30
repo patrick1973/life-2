@@ -11,7 +11,6 @@ import Models.Plant;
  * @author Bart Janisse
  */
 public interface IGedrag {
-    public String getType();
     public void eet(int hoeveelheid);
     public void eetPlant(Plant plant);
 }

@@ -12,18 +12,6 @@ import Models.Plant;
  */
 public class OmnivoorGedrag implements IGedrag {
 
-    String type;
-    
-    public OmnivoorGedrag(String type) {
-  
-        this.type = type;
-    }
-
-    @Override
-    public String getType() {
-        return type;
-    }
-
     @Override
     public void eet(int hoeveelheid) {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
