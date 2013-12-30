@@ -29,11 +29,11 @@ public class WereldView extends javax.swing.JPanel implements Observer{
         
         leefgebied_links = new JPanel(true);
         leefgebied_links.setVisible(true);
-        leefgebied_links.setBackground(Color.gray);
+        leefgebied_links.setBackground(Color.WHITE);
         
         leefgebied_rechts = new JPanel(true);
         leefgebied_rechts.setVisible(true);
-        leefgebied_rechts.setBackground(Color.gray);
+        leefgebied_rechts.setBackground(Color.WHITE);
     }
 
     /**
