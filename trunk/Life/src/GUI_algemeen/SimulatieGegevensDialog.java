@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
+import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
@@ -19,6 +20,12 @@ import javax.swing.KeyStroke;
  * @author patje
  */
 public class SimulatieGegevensDialog extends javax.swing.JDialog {
+    
+        private final instellingenBeest instellingenCarnivoor     = new instellingenBeest();
+        private final instellingenBeest instellingenOmnivoor      = new instellingenBeest();
+        private final instellingenBeest instellingenHerbivoor     = new instellingenBeest();
+        private final instellingenBeest instellingenNonivoor      = new instellingenBeest();
+        private final instellingenPlant instellingenPlanten       = new instellingenPlant();
 
     /**
      * A return status code - returned if Cancel button has been pressed
@@ -37,6 +44,8 @@ public class SimulatieGegevensDialog extends javax.swing.JDialog {
         initComponents();
         // met onderstaande regel wordt de lokatie van de dialog in het midden van het scherm gezet.
         this.setLocationRelativeTo(null);
+        
+        this.addTabs();
 
         // Close the dialog when Esc is pressed
         String cancelName = "cancel";
@@ -69,13 +78,10 @@ public class SimulatieGegevensDialog extends javax.swing.JDialog {
         okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        instellingenHerbivoor = new GUI_algemeen.instellingenBeest();
-        instellingenOmnivoor = new GUI_algemeen.instellingenBeest();
-        instellingenNonivoor = new GUI_algemeen.instellingenBeest();
-        instellingenCarnivoor = new GUI_algemeen.instellingenBeest();
-        instellingenPlant = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(725, 500));
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 closeDialog(evt);
@@ -96,24 +102,6 @@ public class SimulatieGegevensDialog extends javax.swing.JDialog {
             }
         });
 
-        jTabbedPane1.addTab("Herbivoor", instellingenHerbivoor);
-        jTabbedPane1.addTab("Omnivoor", instellingenOmnivoor);
-        jTabbedPane1.addTab("Nonivoor", instellingenNonivoor);
-        jTabbedPane1.addTab("Carnivoor", instellingenCarnivoor);
-
-        javax.swing.GroupLayout instellingenPlantLayout = new javax.swing.GroupLayout(instellingenPlant);
-        instellingenPlant.setLayout(instellingenPlantLayout);
-        instellingenPlantLayout.setHorizontalGroup(
-            instellingenPlantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 704, Short.MAX_VALUE)
-        );
-        instellingenPlantLayout.setVerticalGroup(
-            instellingenPlantLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 368, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("Plant", instellingenPlant);
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Instellingen voor het aanmaken van een nieuwe simulatie");
 
@@ -122,7 +110,7 @@ public class SimulatieGegevensDialog extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,7 +118,7 @@ public class SimulatieGegevensDialog extends javax.swing.JDialog {
                         .addComponent(cancelButton))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 10, Short.MAX_VALUE)))
                 .addContainerGap())
             .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -222,17 +210,30 @@ public class SimulatieGegevensDialog extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
-    private GUI_algemeen.instellingenBeest instellingenCarnivoor;
-    private GUI_algemeen.instellingenBeest instellingenHerbivoor;
-    private GUI_algemeen.instellingenBeest instellingenNonivoor;
-    private GUI_algemeen.instellingenBeest instellingenOmnivoor;
-    private javax.swing.JPanel instellingenPlant;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JButton okButton;
     // End of variables declaration//GEN-END:variables
 
     private int returnStatus = RET_CANCEL;
+    
+    private void addTabs()
+    {
+        
+        
+        
+        ImageIcon iconPlant     = new ImageIcon(getClass().getResource("groen.png"));
+        ImageIcon iconCanivoor  = new ImageIcon(getClass().getResource("rood.png"));
+        ImageIcon iconOmnivoor  = new ImageIcon(getClass().getResource("geel.png"));
+        ImageIcon iconHerbivoor = new ImageIcon(getClass().getResource("bruin.png"));
+        ImageIcon iconNonivoor  = new ImageIcon(getClass().getResource("paars.png"));
+        
+        this.jTabbedPane1.addTab("Carnivoor  ",iconCanivoor, instellingenCarnivoor);
+        this.jTabbedPane1.addTab("Omnivoor  ", iconOmnivoor, instellingenOmnivoor);
+        this.jTabbedPane1.addTab("Herbivoor  ", iconHerbivoor, instellingenHerbivoor);
+        this.jTabbedPane1.addTab("Nonivoor  ", iconNonivoor, instellingenNonivoor);
+        this.jTabbedPane1.addTab("Plant  ",iconPlant, instellingenPlanten);
+    }
     /**
      * retourneerd het ingevoerde aantal poten van een Carnivoor
      * @return 
