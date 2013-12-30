@@ -4,6 +4,8 @@
  */
 package Models;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Observable;
 
 /**
@@ -11,25 +13,25 @@ import java.util.Observable;
  * @author Bart Janisse
  */
 public class WereldModel extends Observable {
-
-    Leefgebied leefgebied1;
-    Leefgebied leefgebied2;
+    
+    private ArrayList<Leefgebied> leefgebieden;
     
     public WereldModel() 
     {
+        leefgebieden = new ArrayList<>();
     }
     
     public void setAantalElementen(int elementen)
     {
-        int planten = (int)(elementen * 0.3 / 2.0);
-        int obstakels = (int)(elementen * 0.1 / 2.0);
-        int carnivoren = (int)(elementen * 0.4 / 2.0);
-        int omnivoren = (int)(elementen * 0.05 / 2.0);
-        int herbivoren = (int)(elementen * 0.1 / 2.0);
-        int nonivoren = (int)(elementen * 0.05 /2.0);
-        
-        leefgebied1 = new Leefgebied(obstakels, planten, carnivoren, omnivoren, herbivoren, nonivoren); 
-        leefgebied2 = new Leefgebied(obstakels, planten, carnivoren, omnivoren, herbivoren, nonivoren); 
+        int planten =    (int)(elementen * 0.3  / 2.0);
+        int obstakels =  (int)(elementen * 0.1  / 2.0);
+        int carnivoren = (int)(elementen * 0.4  / 2.0);
+        int omnivoren =  (int)(elementen * 0.05 / 2.0);
+        int herbivoren = (int)(elementen * 0.1  / 2.0);
+        int nonivoren =  (int)(elementen * 0.05 / 2.0);
+         
+        leefgebieden.add(new Leefgebied(obstakels, planten, carnivoren, omnivoren, herbivoren, nonivoren));
+        leefgebieden.add(new Leefgebied(obstakels, planten, carnivoren, omnivoren, herbivoren, nonivoren));
         
         this.setChanged();
         this.notifyObservers();
@@ -43,6 +45,21 @@ public class WereldModel extends Observable {
     public int getLeefgebiedHoogte()
     {
         return 400;
+    }
+    
+    public Iterator<Leefgebied> getLeefgebieden()
+    {
+        return leefgebieden.iterator();
+    }
+    
+    public void simulatieStap()
+    {
+        Iterator<Leefgebied> it = getLeefgebieden();
+        while(it.hasNext())
+        {
+            Leefgebied l = it.next();
+            l.simulatieStap();
+        }
     }
     
 }
