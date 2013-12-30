@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LifeSettings>
+<XMLObject>
+  <typeBeest>Carnivoor</typeBeest>
+  <aantalPoten>3</aantalPoten>
+  <maxGewicht>80</maxGewicht>
+  <maxEnergie>22</maxEnergie>
+  </XMLObject>
+  
+  <XMLObject>
+  <typeBeest>herbivoor</typeBeest>
+  <aantalPoten>4</aantalPoten>
+  <maxGewicht>100</maxGewicht>
+  <maxEnergie>90</maxEnergie>
+  </XMLObject>
+  
+  <XMLObject>
+  <typeBeest>omnivoor</typeBeest>
+  <aantalPoten>5</aantalPoten>
+  <maxGewicht>40</maxGewicht>
+  <maxEnergie>120</maxEnergie>
+  </XMLObject>
+  
+  <XMLObject>
+  <typeBeest>nonivoor</typeBeest>
+  <aantalPoten>7</aantalPoten>
+  <maxGewicht>30</maxGewicht>
+  <maxEnergie>50</maxEnergie>
+  </XMLObject>
+</LifeSettings>
