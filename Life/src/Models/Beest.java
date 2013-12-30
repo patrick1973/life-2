@@ -4,6 +4,8 @@
  */
 package Models;
 
+import Gedrag.IGedrag;
+
 /**
  *
  * @author Bart Janisse

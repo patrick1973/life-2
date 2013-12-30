@@ -2,7 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Models;
+package Gedrag;
+
+import Models.Plant;
 
 /**
  *

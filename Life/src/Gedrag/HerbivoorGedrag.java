@@ -2,17 +2,19 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Models;
+package Gedrag;
+
+import Models.Plant;
 
 /**
  *
  * @author Bart Janisse
  */
-public class OmnivoorGedrag implements IGedrag {
+public class HerbivoorGedrag implements IGedrag {
 
     String type;
     
-    public OmnivoorGedrag(String type) {
+    public HerbivoorGedrag(String type) {
   
         this.type = type;
     }
@@ -24,13 +26,11 @@ public class OmnivoorGedrag implements IGedrag {
 
     @Override
     public void eet(int hoeveelheid) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void eetPlant(Plant plant) {
-        plant.gegetenWorden(20);
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public void eetPlant(Plant plant) {
+        plant.gegetenWorden(15);
+    }
     
 }

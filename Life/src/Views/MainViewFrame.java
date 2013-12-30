@@ -13,7 +13,7 @@ import javax.swing.JFrame;
  *
  * @author Bart Janisse
  */
-public class MainViewFrame extends javax.swing.JFrame implements Observer {
+public class MainViewFrame extends javax.swing.JFrame {
 
     private WereldController wereld;
     
@@ -34,8 +34,6 @@ public class MainViewFrame extends javax.swing.JFrame implements Observer {
         
     }
 
-      
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,8 +125,4 @@ public class MainViewFrame extends javax.swing.JFrame implements Observer {
     private Views.WereldView wereldView;
     // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
