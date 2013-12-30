@@ -4,12 +4,16 @@
  */
 package Models;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Bart Janisse
  */
 public class Leefgebied {
 
+    private ArrayList<Beest> beesten;
+            
     public Leefgebied(int obstakels, int planten, int carnivoren, int omnivoren, int herbivoren, int nonivoren) 
     {
     }
