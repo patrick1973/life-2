@@ -147,4 +147,17 @@ public class instellingenBeest extends javax.swing.JPanel {
             return -1; 
         }   
     }
+    
+    public void setAantalPoten(int aantal)
+    {
+        this.jTextFieldAantalPoten.setText(""+ aantal);
+    }
+    public void setMaxGewicht (int gewicht)
+    {
+        this.jTextFieldMaximaalGewicht.setText(""+gewicht);
+    }
+    public void setMaxEnergie(int energie)
+    {
+        this.jTextFieldMaximaalEnergieNiveau.setText(""+ energie);
+    }
 }
