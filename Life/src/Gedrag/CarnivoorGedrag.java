@@ -13,11 +13,6 @@ import Models.Plant;
 public class CarnivoorGedrag implements IGedrag {
 
     @Override
-    public String getType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public void eet(int hoeveelheid) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
