@@ -14,6 +14,16 @@ import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.KeyStroke;
+import java.io.File;
+import java.io.IOException;
+import javax.swing.JOptionPane;
+import org.w3c.dom.Document;
+import org.w3c.dom.*;
+
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -44,7 +54,7 @@ public class SimulatieGegevensDialog extends javax.swing.JDialog {
         initComponents();
         // met onderstaande regel wordt de lokatie van de dialog in het midden van het scherm gezet.
         this.setLocationRelativeTo(null);
-        
+        readXMLfile();
         this.addTabs();
 
         // Close the dialog when Esc is pressed
@@ -234,22 +244,7 @@ public class SimulatieGegevensDialog extends javax.swing.JDialog {
         this.jTabbedPane1.addTab("Nonivoor  ", iconNonivoor, instellingenNonivoor);
         this.jTabbedPane1.addTab("Plant  ",iconPlant, instellingenPlanten);
         
-        // laad init waarde
-       instellingenCarnivoor.setAantalPoten(4);
-       instellingenCarnivoor.setMaxGewicht(30);
-       instellingenCarnivoor.setMaxEnergie(100);
-       
-       instellingenOmnivoor.setAantalPoten(2);
-       instellingenOmnivoor.setMaxGewicht(37);
-       instellingenOmnivoor.setMaxEnergie(150);
-       
-       instellingenHerbivoor.setAantalPoten(1);
-       instellingenHerbivoor.setMaxGewicht(50);
-       instellingenHerbivoor.setMaxEnergie(100);
-       
-       instellingenNonivoor.setAantalPoten(50);
-       instellingenNonivoor.setMaxGewicht(130);
-       instellingenNonivoor.setMaxEnergie(200);
+       instellingenPlanten.setVoedingsWaarde(1200);
        
     }
     /**
@@ -350,5 +345,87 @@ public class SimulatieGegevensDialog extends javax.swing.JDialog {
     public int getNonivoorMaxEnergie() 
     {
         return this.instellingenNonivoor.getMaximaalEnergie();
+    }
+    
+    /**
+     * retourneerd het ingevoerde voedingswaarde van een plant
+     * @return 
+     */
+    public int getPlantVoedingsWaarde()
+    {
+        return this.instellingenPlanten.getVoedingsWaarde();
+    }
+    
+    private void readXMLfile()
+    {
+        try
+        {
+         DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+         DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
+         Document doc = docBuilder.parse (new File("LifeSettings.xml"));
+         
+         // normalize text representation
+         doc.getDocumentElement().normalize();
+         
+         NodeList listOfXMLobjects = doc.getElementsByTagName("XMLObject");
+         
+         String[] typeBeest = new String[listOfXMLobjects.getLength()];
+         int[] aantalPoten = new int[listOfXMLobjects.getLength()];
+         int[] maxGewicht = new int[listOfXMLobjects.getLength()];
+         int[] maxEnergie = new int[listOfXMLobjects.getLength()];
+         for (int s=0; s<listOfXMLobjects.getLength(); s++)
+         {
+             Node firstXMLobjectNode = listOfXMLobjects.item(s);
+             if (firstXMLobjectNode.getNodeType() == Node.ELEMENT_NODE)
+             {
+               Element EerstBeestElement = (Element)firstXMLobjectNode;
+                         
+                //-------
+                NodeList typeList = EerstBeestElement.getElementsByTagName("typeBeest");
+                Element typeBeestElement = (Element)typeList.item(0);
+                NodeList typeBeestNodeList = typeBeestElement.getChildNodes();  
+                
+                NodeList aantPList = EerstBeestElement.getElementsByTagName("aantalPoten");
+                Element aantalPotenElement = (Element)aantPList.item(0);
+                NodeList aantalPotenNodeList = aantalPotenElement.getChildNodes();
+
+                NodeList maxGewichtList = EerstBeestElement.getElementsByTagName("maxGewicht");
+                Element maxGewichtElement = (Element)maxGewichtList.item(0);
+                NodeList maxGewichtNodeList = maxGewichtElement.getChildNodes();
+                
+                NodeList maxEnergieList = EerstBeestElement.getElementsByTagName("maxEnergie");
+                Element maxEnergieElement = (Element)maxEnergieList.item(0);
+                NodeList maxEnergieNodeList = maxEnergieElement.getChildNodes();
+               
+                
+                typeBeest[s]    = (String)typeBeestNodeList.item(0).getNodeValue().trim();
+                aantalPoten[s]  =  Integer.valueOf(aantalPotenNodeList.item(0).getNodeValue());
+                maxGewicht[s]   =   Integer.valueOf(maxGewichtNodeList.item(0).getNodeValue());
+                maxEnergie[s]   = Integer.valueOf(maxEnergieNodeList.item(0).getNodeValue());       
+             }
+         }
+        // laad init waarde
+       instellingenCarnivoor.setAantalPoten( aantalPoten[0]);
+       instellingenCarnivoor.setMaxGewicht( maxGewicht[0]);
+       instellingenCarnivoor.setMaxEnergie( maxEnergie[0]);
+       
+       instellingenOmnivoor.setAantalPoten( aantalPoten[1]);
+       instellingenOmnivoor.setMaxGewicht( maxGewicht[1]);
+       instellingenOmnivoor.setMaxEnergie( maxEnergie[1]);
+       
+       instellingenHerbivoor.setAantalPoten( aantalPoten[2]);
+       instellingenHerbivoor.setMaxGewicht( maxGewicht[2]);
+       instellingenHerbivoor.setMaxEnergie( maxEnergie[2]);
+       
+       instellingenNonivoor.setAantalPoten( aantalPoten[3]);
+       instellingenNonivoor.setMaxGewicht( maxGewicht[3]);
+       instellingenNonivoor.setMaxEnergie( maxEnergie[3]);
+         
+        }   
+        catch (  SAXException | IOException | ParserConfigurationException ex)
+        {
+                JOptionPane.showMessageDialog(null,"Er is iets mis gegaan met de XML parse : " + ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+        }
+        
     }
 }
