@@ -31,8 +31,7 @@ public class BeestFactory {
         
         switch (beestType)
         {
-            
-            case OMNIVOOR : beest = new Beest(new OmnivoorGedrag());
+            case OMNIVOOR :  beest = new Beest(new OmnivoorGedrag());
                              break;
 
             case HERBIVOOR : beest = new Beest(new HerbivoorGedrag());
