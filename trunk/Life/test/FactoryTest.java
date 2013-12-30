@@ -11,12 +11,8 @@ import Gedrag.IGedrag;
 import Gedrag.NonivoorGedrag;
 import Gedrag.OmnivoorGedrag;
 import Models.Beest;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
 import static org.junit.Assert.*;
+
 
 /**
  *
@@ -57,9 +53,10 @@ public class FactoryTest {
         IGedrag expectedGedrag = b.getGedrag();
         
         assertNotNull(b);
-        assertEquals(expectedGedrag.getClass(), OmnivoorGedrag.class );
+        assertEquals(expectedGedrag.getClass(),  OmnivoorGedrag.class );
         assertNotSame(expectedGedrag.getClass(), HerbivoorGedrag.class );
         assertNotSame(expectedGedrag.getClass(), CarnivoorGedrag.class );
         assertNotSame(expectedGedrag.getClass(), NonivoorGedrag.class );
     }
+
 }
