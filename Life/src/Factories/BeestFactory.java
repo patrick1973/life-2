@@ -1,14 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Factories;
 
-import Gedrag.CarnivoorGedrag;
-import Gedrag.HerbivoorGedrag;
-import Gedrag.NonivoorGedrag;
-import Gedrag.OmnivoorGedrag;
 import Models.Beest;
+import Models.Positie;
+import Models.Richting;
 
 /**
  *
@@ -18,32 +12,25 @@ public class BeestFactory {
     
     private static BeestFactory instance = new BeestFactory();
    
-    private BeestFactory() {
-    }
+    /**
+     * Private constructor
+     */
+    private BeestFactory() {}
     
+    /**
+     * @return een single instance van deze factory
+     */
     public static BeestFactory getInstance(){
         return instance;
     }
     
-    public Beest createBeest(Beesten beestType)
-    {
-        Beest beest = null;
-        
-        switch (beestType)
-        {
-            case OMNIVOOR :  beest = new Beest(new OmnivoorGedrag());
-                             break;
-
-            case HERBIVOOR : beest = new Beest(new HerbivoorGedrag());
-                             break;
-         
-            case CARNIVOOR : beest = new Beest(new CarnivoorGedrag());
-                             break;    
-                
-            case NONIVOOR  : beest = new Beest(new NonivoorGedrag());
-                             break; 
-        }
-        
-        return beest;
+    /**
+     * Creert een nieuw beest op basis van het beesttype.
+     * @param beestType
+     * @return nieuw Beest
+     */
+    public Beest createBeest(BeestType beestType, Positie p, Richting r, int poten, int maxGewicht, int maxEnergie)
+    {       
+        return new Beest(beestType, p, r, poten, maxGewicht, maxEnergie);
     }
 }
