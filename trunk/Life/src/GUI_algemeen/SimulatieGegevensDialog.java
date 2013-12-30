@@ -233,6 +233,24 @@ public class SimulatieGegevensDialog extends javax.swing.JDialog {
         this.jTabbedPane1.addTab("Herbivoor  ", iconHerbivoor, instellingenHerbivoor);
         this.jTabbedPane1.addTab("Nonivoor  ", iconNonivoor, instellingenNonivoor);
         this.jTabbedPane1.addTab("Plant  ",iconPlant, instellingenPlanten);
+        
+        // laad init waarde
+       instellingenCarnivoor.setAantalPoten(4);
+       instellingenCarnivoor.setMaxGewicht(30);
+       instellingenCarnivoor.setMaxEnergie(100);
+       
+       instellingenOmnivoor.setAantalPoten(2);
+       instellingenOmnivoor.setMaxGewicht(37);
+       instellingenOmnivoor.setMaxEnergie(150);
+       
+       instellingenHerbivoor.setAantalPoten(1);
+       instellingenHerbivoor.setMaxGewicht(50);
+       instellingenHerbivoor.setMaxEnergie(100);
+       
+       instellingenNonivoor.setAantalPoten(50);
+       instellingenNonivoor.setMaxGewicht(130);
+       instellingenNonivoor.setMaxEnergie(200);
+       
     }
     /**
      * retourneerd het ingevoerde aantal poten van een Carnivoor
