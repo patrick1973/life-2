@@ -4,41 +4,39 @@
  */
 package Models;
 
+import java.util.Random;
+
 /**
  * Algemene klasse voor de XY positie van bijvoorbeeld beesten planten en obstakels
  */
 public class Positie {
 
-    private int x;
-    private int y;
+    int posX; 
+    int posY;
     
-    /**
-     * Constructor voor een positie object
-     * @param x de beginwaarde voor x
-     * @param y de beginwaarde voor y
-     */
-    public Positie(int x, int y) 
+    private final Random RANDOM = new Random();
+     
+    public Positie() 
     {
-        this.x = x;
-        this.y = y;
+         posX = RANDOM.nextInt(500);
+         posY = RANDOM.nextInt(400); 
     }
-    
-    /**
-     * 
-     * @return de x-positie
-     */
-    public int getX()
-    {
-        return this.x;
+
+    public int getPosX() {
+        return posX;
     }
-    
-    /**
-     * 
-     * @return de y-positie
-     */
-    public int getY()
-    {
-        return this.y;
+
+    public void setPosX(int posX) {
+        this.posX = posX;
     }
-    
+
+    public int getPosY() {
+        return posY;
+    }
+
+    public void setPosY(int posY) {
+        this.posY = posY;
+    }
+
+
 }

@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Factories;
+package Enums;
 
 import Gedrag.CarnivoorGedrag;
 import Gedrag.HerbivoorGedrag;
@@ -29,7 +29,7 @@ import Gedrag.OmnivoorGedrag;
      }
  
      /**
-      * @return het gedrag sat bij het type beest hoort
+      * @return het gedrag dat bij het type beest hoort
       */
      public IGedrag getGedrag()
      {

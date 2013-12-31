@@ -4,15 +4,15 @@
  */
 
 import Factories.BeestFactory;
-import Factories.BeestType;
+import Enums.BeestType;
 import Gedrag.CarnivoorGedrag;
 import Gedrag.HerbivoorGedrag;
 import Gedrag.IGedrag;
 import Gedrag.NonivoorGedrag;
 import Gedrag.OmnivoorGedrag;
 import Models.Beest;
+import Enums.Richting;
 import Models.Positie;
-import Models.Richting;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
@@ -58,7 +58,10 @@ public class FactoryTest {
     @Test
     public void omnivoorCreateTest() 
     {
-        Beest b = beesten.createBeest(BeestType.OMNIVOOR, new Positie(10, 15), new Richting(), 20, 30, 40 );
+        Richting richting = Richting.getRandom();
+        Positie pos = new Positie();
+        
+        Beest b = beesten.createBeest(BeestType.OMNIVOOR, pos, richting, 20, 30, 40 );
        
         IGedrag expectedGedrag = b.getGedrag();
         
@@ -72,52 +75,90 @@ public class FactoryTest {
         assertEquals(b.getMaxGewicht(), 30);
         assertEquals(b.getMaxEnergie(), 40);
         
-        assertEquals(b.getPositie().getX(), 10);
-        assertEquals(b.getPositie().getY(), 15);
+        assertEquals(b.getPositie().getPosX(), pos.getPosX());
+        assertEquals(b.getPositie().getPosY(), pos.getPosY());
+        
+        assertEquals(b.getRichting(), richting);
     }
     
     // Test controleert of er een beest van het type herbivoor wordt aangemaakt
     // en of de juiste parameters worden gebruikt.
     @Test
-    public void HerbivoorCreateTest() 
+    public void herbivoorCreateTest() 
     {
-//        Beest b = beesten.createBeest(BeestType.HERBIVOOR);
-//        IGedrag expectedGedrag = b.getGedrag();
-//        
-//        assertNotNull(b);
-//        assertEquals(expectedGedrag.getClass(),  HerbivoorGedrag.class );
-//        assertNotSame(expectedGedrag.getClass(), OmnivoorGedrag.class );
-//        assertNotSame(expectedGedrag.getClass(), CarnivoorGedrag.class );
-//        assertNotSame(expectedGedrag.getClass(), NonivoorGedrag.class );
+        Richting richting = Richting.getRandom();
+        Positie pos = new Positie();
+         
+        Beest b = beesten.createBeest(BeestType.HERBIVOOR, pos, richting, 21, 31, 41 );
+        IGedrag expectedGedrag = b.getGedrag();
+        
+        assertNotNull(b);
+        assertEquals(expectedGedrag.getClass(),  HerbivoorGedrag.class );
+        assertNotSame(expectedGedrag.getClass(), OmnivoorGedrag.class );
+        assertNotSame(expectedGedrag.getClass(), CarnivoorGedrag.class );
+        assertNotSame(expectedGedrag.getClass(), NonivoorGedrag.class );
+        
+        assertEquals(b.getPoten(), 21);
+        assertEquals(b.getMaxGewicht(), 31);
+        assertEquals(b.getMaxEnergie(), 41);
+        
+        assertEquals(b.getPositie().getPosX(), pos.getPosX());
+        assertEquals(b.getPositie().getPosY(), pos.getPosY());
+        
+        assertEquals(b.getRichting(), richting);
     }
     
     // Test controleert of er een beest van het type Carnivoor wordt aangemaakt
     // en of de juiste parameters worden gebruikt.
     @Test
-    public void CarnivoorCreateTest() 
+    public void carnivoorCreateTest() 
     {
-//        Beest b = beesten.createBeest(BeestType.CARNIVOOR);
-//        IGedrag expectedGedrag = b.getGedrag();
-//        
-//        assertNotNull(b);
-//        assertEquals(expectedGedrag.getClass(),  CarnivoorGedrag.class );
-//        assertNotSame(expectedGedrag.getClass(), HerbivoorGedrag.class );
-//        assertNotSame(expectedGedrag.getClass(), OmnivoorGedrag.class );
-//        assertNotSame(expectedGedrag.getClass(), NonivoorGedrag.class );
+        Richting richting = Richting.getRandom();
+        Positie pos = new Positie();
+         
+        Beest b = beesten.createBeest(BeestType.CARNIVOOR, pos,  richting, 22, 32, 42 );
+        IGedrag expectedGedrag = b.getGedrag();
+        
+        assertNotNull(b);
+        assertEquals(expectedGedrag.getClass(),  CarnivoorGedrag.class );
+        assertNotSame(expectedGedrag.getClass(), HerbivoorGedrag.class );
+        assertNotSame(expectedGedrag.getClass(), OmnivoorGedrag.class );
+        assertNotSame(expectedGedrag.getClass(), NonivoorGedrag.class );
+        
+        assertEquals(b.getPoten(), 22);
+        assertEquals(b.getMaxGewicht(), 32);
+        assertEquals(b.getMaxEnergie(), 42);
+        
+        assertEquals(b.getPositie().getPosX(), pos.getPosX());
+        assertEquals(b.getPositie().getPosY(), pos.getPosY());
+        
+        assertEquals(b.getRichting(), richting);
     }
     
     // Test controleert of er een beest van het type omnivoor wordt aangemaakt
     // en of de juiste parameters worden gebruikt.
     @Test
-    public void nvoorCreateTest() 
+    public void nonivoorCreateTest() 
     {
-//        Beest b = beesten.createBeest(BeestType.NONIVOOR);
-//        IGedrag expectedGedrag = b.getGedrag();
-//        
-//        assertNotNull(b);
-//        assertEquals(expectedGedrag.getClass(),  NonivoorGedrag.class );
-//        assertNotSame(expectedGedrag.getClass(), HerbivoorGedrag.class );
-//        assertNotSame(expectedGedrag.getClass(), CarnivoorGedrag.class );
-//        assertNotSame(expectedGedrag.getClass(), OmnivoorGedrag.class );
+        Richting richting = Richting.getRandom();
+        Positie pos = new Positie();
+        
+        Beest b = beesten.createBeest(BeestType.NONIVOOR, pos,  richting, 23, 33, 43 );
+        IGedrag expectedGedrag = b.getGedrag();
+        
+        assertNotNull(b);
+        assertEquals(expectedGedrag.getClass(),  NonivoorGedrag.class );
+        assertNotSame(expectedGedrag.getClass(), HerbivoorGedrag.class );
+        assertNotSame(expectedGedrag.getClass(), CarnivoorGedrag.class );
+        assertNotSame(expectedGedrag.getClass(), OmnivoorGedrag.class );
+        
+        assertEquals(b.getPoten(), 23);
+        assertEquals(b.getMaxGewicht(), 33);
+        assertEquals(b.getMaxEnergie(), 43);
+        
+        assertEquals(b.getPositie().getPosX(), pos.getPosX());
+        assertEquals(b.getPositie().getPosY(), pos.getPosY());
+        
+        assertEquals(b.getRichting(), richting);
     }
 }
