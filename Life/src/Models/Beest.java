@@ -1,6 +1,7 @@
 package Models;
 
-import Factories.BeestType;
+import Enums.Richting;
+import Enums.BeestType;
 import Gedrag.IGedrag;
 
 

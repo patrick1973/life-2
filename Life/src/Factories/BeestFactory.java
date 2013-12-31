@@ -1,8 +1,9 @@
 package Factories;
 
+import Enums.BeestType;
 import Models.Beest;
 import Models.Positie;
-import Models.Richting;
+import Enums.Richting;
 
 /**
  *
