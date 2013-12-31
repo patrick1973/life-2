@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Enums;
 
 import Gedrag.CarnivoorGedrag;
@@ -10,9 +6,9 @@ import Gedrag.IGedrag;
 import Gedrag.NonivoorGedrag;
 import Gedrag.OmnivoorGedrag;
 
-/**
- *
- * @author Bart Janisse
+/*
+ * Enumeratie met voor ieder beest een type. Bij het beesttype wordt
+ * ook het gedrag vastgelegd.
  */
  public enum BeestType 
  {

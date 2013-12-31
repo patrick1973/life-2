@@ -1,41 +1,58 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Models;
 
 import java.util.Random;
 
 /**
- * Algemene klasse voor de XY positie van bijvoorbeeld beesten planten en obstakels
+ * Algemene klasse voor de XY positie van bijvoorbeeld beesten planten en 
+ * obstakels. Als de klasse geinstantieerd wordt dan wordt voor X en Y een
+ * random waarde genomen.
  */
 public class Positie {
 
-    int posX; 
-    int posY;
+    int X; 
+    int Y;
     
-    private final Random RANDOM = new Random();
-     
+    private final Random ramdom = new Random();
+    
+    /*
+     * Aanroepen van de constructor zorgt voor random X en Y waarden
+     */
     public Positie() 
     {
-         posX = RANDOM.nextInt(500);
-         posY = RANDOM.nextInt(400); 
+         X = ramdom.nextInt(500);
+         Y = ramdom.nextInt(400); 
+    }
+    
+    /*
+     * Geeft de actuele X waarde terug
+     */
+    public int getX() 
+    {
+        return X;
     }
 
-    public int getPosX() {
-        return posX;
+    /*
+     * Stelt de actuele X waarde in
+     */
+    public void setX(int posX) 
+    {
+        this.X = posX;
     }
 
-    public void setPosX(int posX) {
-        this.posX = posX;
+    /*
+     * Geeft de actuele Y waarde terug
+     */
+    public int getY() 
+    {
+        return Y;
     }
 
-    public int getPosY() {
-        return posY;
-    }
-
-    public void setPosY(int posY) {
-        this.posY = posY;
+    /*
+     * Stelt de actuele Y waarde in
+     */
+    public void setY(int posY) 
+    {
+        this.Y = posY;
     }
 
 
