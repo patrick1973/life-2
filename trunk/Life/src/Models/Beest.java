@@ -59,6 +59,16 @@ public class Beest {
     {
         return richting;
     }
+    
+    public void setRichting(Richting r)
+    {
+        this.richting = r;
+    }
 
+    public void loop()
+    {
+        positie.X += richting.getVerplaatsingX();
+        positie.Y += richting.getVerplaatsingY();
+    }
     
 }

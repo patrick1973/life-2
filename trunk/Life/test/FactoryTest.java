@@ -75,8 +75,8 @@ public class FactoryTest {
         assertEquals(b.getMaxGewicht(), 30);
         assertEquals(b.getMaxEnergie(), 40);
         
-        assertEquals(b.getPositie().getPosX(), pos.getPosX());
-        assertEquals(b.getPositie().getPosY(), pos.getPosY());
+        assertEquals(b.getPositie().getX(), pos.getX());
+        assertEquals(b.getPositie().getY(), pos.getY());
         
         assertEquals(b.getRichting(), richting);
     }
@@ -102,10 +102,12 @@ public class FactoryTest {
         assertEquals(b.getMaxGewicht(), 31);
         assertEquals(b.getMaxEnergie(), 41);
         
-        assertEquals(b.getPositie().getPosX(), pos.getPosX());
-        assertEquals(b.getPositie().getPosY(), pos.getPosY());
+        assertEquals(b.getPositie().getX(), pos.getX());
+        assertEquals(b.getPositie().getY(), pos.getY());
         
         assertEquals(b.getRichting(), richting);
+        
+        b.loop();
     }
     
     // Test controleert of er een beest van het type Carnivoor wordt aangemaakt
@@ -129,8 +131,8 @@ public class FactoryTest {
         assertEquals(b.getMaxGewicht(), 32);
         assertEquals(b.getMaxEnergie(), 42);
         
-        assertEquals(b.getPositie().getPosX(), pos.getPosX());
-        assertEquals(b.getPositie().getPosY(), pos.getPosY());
+        assertEquals(b.getPositie().getX(), pos.getX());
+        assertEquals(b.getPositie().getY(), pos.getY());
         
         assertEquals(b.getRichting(), richting);
     }
@@ -156,8 +158,8 @@ public class FactoryTest {
         assertEquals(b.getMaxGewicht(), 33);
         assertEquals(b.getMaxEnergie(), 43);
         
-        assertEquals(b.getPositie().getPosX(), pos.getPosX());
-        assertEquals(b.getPositie().getPosY(), pos.getPosY());
+        assertEquals(b.getPositie().getX(), pos.getX());
+        assertEquals(b.getPositie().getY(), pos.getY());
         
         assertEquals(b.getRichting(), richting);
     }
