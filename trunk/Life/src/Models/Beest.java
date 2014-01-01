@@ -11,7 +11,7 @@ import Gedrag.IGedrag;
  */
 public class Beest {
 
-    IGedrag gedrag;
+    BeestType type;
     int positieX;
     int positieY;
     int poten;
@@ -22,17 +22,18 @@ public class Beest {
     
     public Beest(BeestType type, Positie startPositie, Richting startRichting, int poten, int maxGewicht, int maxEnergie) 
     {
-        this.gedrag = type.getGedrag();
+        //this.gedrag = type.getGedrag();
+        this.type = type;
         this.poten = poten;
         this.maxGewicht = maxGewicht;
         this.maxEnergie = maxEnergie;
         this.positie = startPositie;
         this.richting = startRichting;
     }
-    
-    public IGedrag getGedrag()
+        
+    public BeestType getType()
     {
-        return gedrag;
+        return this.type;
     }
     
     public int getPoten()
@@ -71,4 +72,8 @@ public class Beest {
         positie.Y += richting.getVerplaatsingY();
     }
     
+    public void eet(int hoeveelheid)
+    {
+        
+    }
 }

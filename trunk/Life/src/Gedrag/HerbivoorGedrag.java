@@ -12,7 +12,6 @@ import Models.Plant;
  */
 public class HerbivoorGedrag implements IGedrag {
 
-    
     public HerbivoorGedrag() {
   
     }
