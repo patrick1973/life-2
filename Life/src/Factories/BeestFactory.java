@@ -30,8 +30,8 @@ public class BeestFactory {
      * @param beestType
      * @return nieuw Beest
      */
-    public Beest createBeest(BeestType beestType, Positie p, Richting r, int poten, int maxGewicht, int maxEnergie)
+    public Beest createBeest(BeestType beestType, Positie positie, Richting richting, int poten, int maxGewicht, int maxEnergie)
     {       
-        return new Beest(beestType, p, r, poten, maxGewicht, maxEnergie);
+        return new Beest(beestType, positie, richting, poten, maxGewicht, maxEnergie);
     }
 }
