@@ -28,6 +28,8 @@ import org.xml.sax.SAXException;
 /**
  *
  * @author patje
+ * in deze klasse worden de gegevens voor het testen ingelezen vanuit een XML
+ * file. via de DOM parser
  */
 public class SimulatieGegevensDialog extends javax.swing.JDialog {
     
