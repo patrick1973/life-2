@@ -2,7 +2,6 @@ package Models;
 
 import Enums.Richting;
 import Enums.BeestType;
-import Gedrag.IGedrag;
 
 
 /**
