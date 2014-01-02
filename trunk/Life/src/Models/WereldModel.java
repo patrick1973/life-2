@@ -15,6 +15,7 @@ import java.util.Observable;
 public class WereldModel extends Observable {
     
     private ArrayList<Leefgebied> leefgebieden;
+    private ArrayList<Beest> water;
     
     public WereldModel() 
     {
@@ -46,19 +47,22 @@ public class WereldModel extends Observable {
     {
         return 400;
     }
-    
-    public Iterator<Leefgebied> getLeefgebieden()
+      
+     public ArrayList<Leefgebied> getLeefgebieden()
     {
-        return leefgebieden.iterator();
+        return leefgebieden;
+    }
+    
+    public ArrayList<Beest> getWater()
+    {
+        return water;
     }
     
     public void simulatieStap()
     {
-        Iterator<Leefgebied> it = getLeefgebieden();
-        while(it.hasNext())
+        for(Leefgebied leefgebied: leefgebieden)
         {
-            Leefgebied l = it.next();
-            l.simulatieStap();
+            leefgebied.simulatieStap();
         }
     }
     

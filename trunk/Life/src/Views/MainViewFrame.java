@@ -5,6 +5,7 @@
 package Views;
 
 import Controllers.WereldController;
+import Enums.BeestType;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JFrame;
@@ -34,6 +35,14 @@ public class MainViewFrame extends javax.swing.JFrame {
         
     }
 
+//    public Paramas getParams(BeestType type)
+//    {
+//        switch (type)
+//        {
+//            case OMNIVOOR : p = knoppenPaneel.
+//        }
+//    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
