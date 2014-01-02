@@ -19,8 +19,8 @@ public class Positie {
      */
     public Positie() 
     {
-         X = ramdom.nextInt(500);
-         Y = ramdom.nextInt(400); 
+         X = ramdom.nextInt(100);
+         Y = ramdom.nextInt(100); 
     }
     
     /*

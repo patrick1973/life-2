@@ -4,8 +4,11 @@
  */
 package Views;
 
+import Models.Beest;
+import Models.Leefgebied;
 import Models.WereldModel;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JPanel;
@@ -19,6 +22,7 @@ public class WereldView extends javax.swing.JPanel implements Observer{
 
     JPanel leefgebied_links;
     JPanel leefgebied_rechts;
+     private Graphics g;
      
     /**
      * Creates new form WereldView
@@ -34,6 +38,8 @@ public class WereldView extends javax.swing.JPanel implements Observer{
         leefgebied_rechts = new JPanel(true);
         leefgebied_rechts.setVisible(true);
         leefgebied_rechts.setBackground(Color.WHITE);
+        
+        g = this.getGraphics();
     }
 
     /**
@@ -59,6 +65,13 @@ public class WereldView extends javax.swing.JPanel implements Observer{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
+    public void paint(Graphics g)
+    {
+        super.paint(g);
+        
+        //maze.display();
+    }
+    
     @Override
     public void update(Observable o, Object arg) {
         
@@ -66,14 +79,34 @@ public class WereldView extends javax.swing.JPanel implements Observer{
               
         if(model != null)
         {
+            // Teken de vlakken van het leefgebied
             leefgebied_links.setBounds(110, 110, model.getLeefgebiedBreedte(), model.getLeefgebiedHoogte());
             leefgebied_rechts.setBounds(750, 110, model.getLeefgebiedBreedte(), model.getLeefgebiedHoogte());
 
             this.add(leefgebied_links);
             this.add(leefgebied_rechts);  
 
+            // Teken per leefgebied de beesten
+            for(Leefgebied leefgebied: model.getLeefgebieden())
+            {
+                for(Beest beest: leefgebied.getBeesten())
+                {
+                    int X = beest.getPositie().getX();
+                    int Y = beest.getPositie().getY();
+
+                    // teken het beest;
+                    //g.drawRect(X, Y, 3, 3);
+                }
+            }
+            
+            
             this.repaint();
-        }
+        }        
+    }
+    
+    private void tekenBeest(int posX, int posY)
+    {
+       
     }
     
 }
