@@ -13,13 +13,14 @@ import Models.Plant;
 public class OmnivoorGedrag implements IGedrag {
 
     @Override
-    public void eet(int hoeveelheid) {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int eet(int actueleEnergie, int hoeveelheid) {
+        return -1;
     }
 
     @Override
-    public void eetPlant(Plant plant) {
+    public int eetPlant(int actueleEnergie, Plant plant) {
         plant.gegetenWorden(20);
+        return -1;
     }
     
     
