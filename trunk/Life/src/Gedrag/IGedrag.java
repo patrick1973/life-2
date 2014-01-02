@@ -11,6 +11,6 @@ import Models.Plant;
  * @author Bart Janisse
  */
 public interface IGedrag {
-    public void eet(int hoeveelheid);
-    public void eetPlant(Plant plant);
+    public int eet(int actueleEnergie, int hoeveelheid);
+    public int eetPlant(int actueleEnergie, Plant plant);
 }

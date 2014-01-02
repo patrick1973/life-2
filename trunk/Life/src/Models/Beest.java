@@ -2,6 +2,7 @@ package Models;
 
 import Enums.Richting;
 import Enums.BeestType;
+import Gedrag.IGedrag;
 
 
 /**
@@ -16,6 +17,7 @@ public class Beest {
     int poten;
     int maxGewicht; 
     int maxEnergie;
+    int actueleEnergie;
     Positie positie;
     Richting richting;
     
@@ -73,6 +75,8 @@ public class Beest {
     
     public void eet(int hoeveelheid)
     {
+        IGedrag gedrag = this.type.getGedrag();
+        actueleEnergie = gedrag.eet(hoeveelheid, actueleEnergie);
         
     }
 }

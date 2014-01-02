@@ -13,13 +13,14 @@ import Models.Plant;
 public class CarnivoorGedrag implements IGedrag {
 
     @Override
-    public void eet(int hoeveelheid) {
+    public int eet(int actueleEnergie, int hoeveelheid) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void eetPlant(Plant plant) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int eetPlant(int actueleEnergie, Plant plant) {
+        // Ik eet geen planten dus ik doe hier niets.
+        return actueleEnergie;
     }
     
 }
