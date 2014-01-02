@@ -1,0 +1,6 @@
+Waar komen begina aantallen vandaan in de wereld controller.
+public void cmdNieuweSimulatie()
+moeten deze instelbaar zijn via de gui.
+
+Hoe zullen we de treats afhandelen en waar.
+
