@@ -67,6 +67,28 @@ public class Leefgebied {
         }
     }
     
+    private void maakPlanten(int aantal) 
+    {
+        PlantFactory factory = PlantFactory.getInstance();  
+        
+        for(int i=0; i < aantal; i++)
+        {            
+            planten.add(factory.createPlant());
+        }
+        
+    }
+    
+    private void maakObstakels(int aantal) 
+    {
+        ObstakelFactory factory = ObstakelFactory.getInstance();  
+        
+        for(int i=0; i < aantal; i++)
+        {            
+            obstakels.add(factory.createObstakel());
+        }
+        
+    }
+    
     /**
      * De simulatie stap loopt door de lijst met beesten heen en laat ieder
      * beest een keer lopen. Als een beest buiten het leefgebied komt dan 
@@ -99,25 +121,5 @@ public class Leefgebied {
         return afgevallenBeesten;
     }
 
-    private void maakPlanten(int aantal) 
-    {
-        PlantFactory factory = PlantFactory.getInstance();  
-        
-        for(int i=0; i < aantal; i++)
-        {            
-            planten.add(factory.createPlant());
-        }
-        
-    }
     
-    private void maakObstakels(int aantal) 
-    {
-        ObstakelFactory factory = ObstakelFactory.getInstance();  
-        
-        for(int i=0; i < aantal; i++)
-        {            
-            obstakels.add(factory.createObstakel());
-        }
-        
-    }
 }

@@ -1,6 +1,8 @@
 package Views;
 
+import static Enums.BeestType.CARNIVOOR;
 import static Enums.BeestType.HERBIVOOR;
+import static Enums.BeestType.NONIVOOR;
 import static Enums.BeestType.OMNIVOOR;
 import Models.Beest;
 import Models.Leefgebied;
@@ -18,7 +20,7 @@ import java.util.Observer;
  */
 public class WereldView extends javax.swing.JPanel implements Observer
 {
-    WereldModel model;
+    WereldModel wereldModel;
      
     /**
      * Creates new form WereldView
@@ -36,11 +38,27 @@ public class WereldView extends javax.swing.JPanel implements Observer
         tekenLeefgebied(g, 110, 110);
         tekenLeefgebied(g, 750, 110);
         
-        if(model != null)
+        if(wereldModel != null)
         {
             int i = 0;
-            for(Leefgebied leefgebied: model.getLeefgebieden())
-            {
+            for(Leefgebied leefgebied: wereldModel.getLeefgebieden())
+            {                
+                for(Obstakel obstakel: leefgebied.getObstakels())
+                {
+                    int X = obstakel.getX();
+                    int Y = obstakel.getY();   
+                    int offsetX = 110 + i * 640;
+                    tekenObstakel(g, X * 5 + offsetX, Y * 4 + 110 );
+                }
+                
+                for(Plant plant: leefgebied.getPlanten())
+                {
+                    int X = plant.getX();
+                    int Y = plant.getY();   
+                    int offsetX = 110 + i * 640;
+                    tekenPlant(g, X * 5 + offsetX, Y * 4 + 110 );
+                }
+                
                 for(Beest beest: leefgebied.getBeesten())
                 {
                     int X = beest.getPositie().getX();
@@ -64,23 +82,30 @@ public class WereldView extends javax.swing.JPanel implements Observer
                     tekenBeest(g, kleur, X * 5 + offsetX, Y * 4 + 110 );
                 }
                 
-                for(Obstakel obstakel: leefgebied.getObstakels())
-                {
-                    int X = obstakel.getX();
-                    int Y = obstakel.getY();   
-                    int offsetX = 110 + i * 640;
-                    tekenObstakel(g, X * 5 + offsetX, Y * 4 + 110 );
-                }
-                
-                for(Plant plant: leefgebied.getPlanten())
-                {
-                    int X = plant.getX();
-                    int Y = plant.getY();   
-                    int offsetX = 110 + i * 640;
-                    tekenPlant(g, X * 5 + offsetX, Y * 4 + 110 );
-                }
-                
                 i++;   
+            }
+            
+            for(Beest beest: wereldModel.getWater())
+            {
+                int X = beest.getPositie().getX();
+                int Y = beest.getPositie().getY();
+
+                Color kleur;
+
+                switch(beest.getType())
+                {
+                    case CARNIVOOR : kleur = Color.RED;
+                                     break;
+                    case OMNIVOOR  : kleur = Color.YELLOW;
+                                     break;
+                    case HERBIVOOR : kleur = new Color(182,122,87);
+                                     break;
+                    case NONIVOOR  : kleur = new Color(163,73,164);
+                                     break;
+                    default: kleur = Color.BLACK;
+                }
+                int offsetX = 110;
+                tekenBeest(g, kleur, X * 5 + offsetX, Y * 4 + 110 );
             }
         }
 
@@ -113,14 +138,14 @@ public class WereldView extends javax.swing.JPanel implements Observer
     @Override
     public void update(Observable o, Object arg) 
     {
-        model = (WereldModel)o;
+        wereldModel = (WereldModel)o;
         this.repaint();            
     }
     
     private void tekenLeefgebied(Graphics g, int posX, int posY)
     {
         g.setColor(Color.WHITE);
-        g.fillRect(posX, posY, 510, 410);   
+        g.fillRect(posX, posY, 500, 400);   
     }
     
     private void tekenBeest(Graphics g, Color color, int posX, int posY)

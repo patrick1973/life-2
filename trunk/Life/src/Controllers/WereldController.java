@@ -36,12 +36,13 @@ public class WereldController {
        model = new WereldModel();  
        model.addObserver(view);
        
-       model.setAantalElementen(250);
+       model.setAantalElementen(100);
     }
     
     public void cmdStartSimulatie()
     {
-        
+        // TODO nu nog een handmatige stap....straks automatisch
+        model.simulatieStap();
     }
     
     public void cmdPauzeSimulatie()
