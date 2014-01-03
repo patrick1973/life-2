@@ -36,7 +36,7 @@ public class WereldController {
        model = new WereldModel();  
        model.addObserver(view);
        
-       model.setAantalElementen(50);
+       model.setAantalElementen(250);
     }
     
     public void cmdStartSimulatie()

@@ -1,9 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Views;
 
+import static Enums.BeestType.HERBIVOOR;
+import static Enums.BeestType.OMNIVOOR;
 import Models.Beest;
 import Models.Leefgebied;
 import Models.WereldModel;
@@ -11,7 +9,6 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.Observable;
 import java.util.Observer;
-import javax.swing.JPanel;
 
 /**
  *
@@ -20,8 +17,9 @@ import javax.swing.JPanel;
 public class WereldView extends javax.swing.JPanel implements Observer{
   
 
-    JPanel leefgebied_links;
-    JPanel leefgebied_rechts;
+//    JPanel leefgebied_links;
+//    JPanel leefgebied_rechts;
+    WereldModel model;
      
     /**
      * Creates new form WereldView
@@ -30,13 +28,13 @@ public class WereldView extends javax.swing.JPanel implements Observer{
         initComponents();
         this.setBackground(Color.blue);
         
-        leefgebied_links = new JPanel(true);
-        leefgebied_links.setVisible(true);
-        leefgebied_links.setBackground(Color.WHITE);
-        
-        leefgebied_rechts = new JPanel(true);
-        leefgebied_rechts.setVisible(true);
-        leefgebied_rechts.setBackground(Color.WHITE);
+//        leefgebied_links = new JPanel(true);
+//        leefgebied_links.setVisible(true);
+//        leefgebied_links.setBackground(Color.WHITE);
+//        
+//        leefgebied_rechts = new JPanel(true);
+//        leefgebied_rechts.setVisible(true);
+//        leefgebied_rechts.setBackground(Color.WHITE);
         
         
     }
@@ -46,8 +44,41 @@ public class WereldView extends javax.swing.JPanel implements Observer{
     {
         super.paintComponent(g);
         
-        g.fillRect(10, 10, 20, 20);
+        tekenLeefgebied(g, 110, 110);
+        tekenLeefgebied(g, 750, 110);
         
+        if(model != null)
+        {
+            int i = 0;
+            for(Leefgebied leefgebied: model.getLeefgebieden())
+            {
+                for(Beest beest: leefgebied.getBeesten())
+                {
+                    int X = beest.getPositie().getX();
+                    int Y = beest.getPositie().getY();
+                    
+                    Color kleur;
+                    
+                    switch(beest.getType())
+                    {
+                        case CARNIVOOR : kleur = Color.RED;
+                                         break;
+                        case OMNIVOOR  : kleur = Color.YELLOW;
+                                         break;
+                        case HERBIVOOR : kleur = new Color(182,122,87);
+                                         break;
+                        case NONIVOOR  : kleur = new Color(163,73,164);
+                                         break;
+                        default: kleur = Color.BLACK;
+                    }
+                    int offsetX = 110 + i * 640;
+                    tekenBeest(g, kleur, X * 5 + offsetX, Y * 4 + 110 );
+                }
+                i++;
+                
+            }
+        }
+
     }
       
     /**
@@ -75,40 +106,23 @@ public class WereldView extends javax.swing.JPanel implements Observer{
 
     
     @Override
-    public void update(Observable o, Object arg) {
+    public void update(Observable o, Object arg) 
+    {
         
-        WereldModel model = (WereldModel)o;
-              
-        if(model != null)
-        {
-            // Teken de vlakken van het leefgebied
-            leefgebied_links.setBounds(110, 110, model.getLeefgebiedBreedte(), model.getLeefgebiedHoogte());
-            leefgebied_rechts.setBounds(750, 110, model.getLeefgebiedBreedte(), model.getLeefgebiedHoogte());
-
-            this.add(leefgebied_links);
-            this.add(leefgebied_rechts);  
-
-            // Teken per leefgebied de beesten
-            for(Leefgebied leefgebied: model.getLeefgebieden())
-            {
-                for(Beest beest: leefgebied.getBeesten())
-                {
-                    int X = beest.getPositie().getX();
-                    int Y = beest.getPositie().getY();
-
-                    // teken het beest;
-                    //g.drawRect(X, Y, 3, 3);
-                }
-            }
-            
-            
-            this.repaint();
-        }        
+        model = (WereldModel)o;
+        this.repaint();            
     }
     
-    private void tekenBeest(int posX, int posY)
+    private void tekenLeefgebied(Graphics g, int posX, int posY)
     {
-       
+        g.setColor(Color.WHITE);
+        g.fillRect(posX, posY, 510, 410);   
+    }
+    
+    private void tekenBeest(Graphics g, Color color, int posX, int posY)
+    {
+        g.setColor(color);
+        g.fillRect(posX, posY, 10, 10);
     }
     
 }

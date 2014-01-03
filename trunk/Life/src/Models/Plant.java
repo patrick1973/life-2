@@ -18,6 +18,7 @@ public class Plant {
     
     public void gegetenWorden(int voedingswaarde)
     {
+        // TODO Mogen we onder 0 komen ?
         this.voedingswaarde -= voedingswaarde;
     }
 }
