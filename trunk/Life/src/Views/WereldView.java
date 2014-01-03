@@ -22,7 +22,6 @@ public class WereldView extends javax.swing.JPanel implements Observer{
 
     JPanel leefgebied_links;
     JPanel leefgebied_rechts;
-     private Graphics g;
      
     /**
      * Creates new form WereldView
@@ -39,9 +38,18 @@ public class WereldView extends javax.swing.JPanel implements Observer{
         leefgebied_rechts.setVisible(true);
         leefgebied_rechts.setBackground(Color.WHITE);
         
-        g = this.getGraphics();
+        
     }
-
+    
+    @Override
+    protected void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
+        
+        g.fillRect(10, 10, 20, 20);
+        
+    }
+      
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,12 +73,6 @@ public class WereldView extends javax.swing.JPanel implements Observer{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
-    public void paint(Graphics g)
-    {
-        super.paint(g);
-        
-        //maze.display();
-    }
     
     @Override
     public void update(Observable o, Object arg) {
