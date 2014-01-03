@@ -66,18 +66,13 @@ public class WereldModel extends Observable {
         for(Leefgebied leefgebied: leefgebieden)
         {
             afgevallenBeesten = leefgebied.simulatieStap();
-        }
         
-        if(!afgevallenBeesten.isEmpty())
-        {
             for(Beest beest : afgevallenBeesten)
             {
                 water.add(beest);
             }
         }
-        
         this.setChanged();
         this.notifyObservers();
     }
-    
 }
