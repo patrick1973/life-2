@@ -20,6 +20,7 @@ public class WereldModel extends Observable {
     public WereldModel() 
     {
         leefgebieden = new ArrayList<>();
+        water = new ArrayList<>();
     }
     
     public void setAantalElementen(int elementen)
@@ -60,10 +61,23 @@ public class WereldModel extends Observable {
     
     public void simulatieStap()
     {
+        ArrayList<Beest> afgevallenBeesten = new ArrayList<>();
+        
         for(Leefgebied leefgebied: leefgebieden)
         {
-            leefgebied.simulatieStap();
+            afgevallenBeesten = leefgebied.simulatieStap();
         }
+        
+        if(!afgevallenBeesten.isEmpty())
+        {
+            for(Beest beest : afgevallenBeesten)
+            {
+                water.add(beest);
+            }
+        }
+        
+        this.setChanged();
+        this.notifyObservers();
     }
     
 }
