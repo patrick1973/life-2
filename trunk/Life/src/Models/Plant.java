@@ -1,19 +1,30 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Models;
 
 /**
  *
  * @author Bart Janisse
  */
-public class Plant {
-
+public class Plant 
+{
     int voedingswaarde;
+    int posX;
+    int posY;
     
-    public Plant(int startvoedingswaarde) {
+    public Plant(Positie pos, int startvoedingswaarde) 
+    {
+        this.posX = pos.getX();
+        this.posY = pos.getY();
         this.voedingswaarde = startvoedingswaarde;
+    }
+
+    public int getX() 
+    {
+        return posX;
+    }
+
+    public int getY() 
+    {
+        return posY;
     }
     
     public void gegetenWorden(int voedingswaarde)

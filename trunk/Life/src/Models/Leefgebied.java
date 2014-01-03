@@ -7,6 +7,8 @@ package Models;
 import Enums.BeestType;
 import Enums.Richting;
 import Factories.BeestFactory;
+import Factories.ObstakelFactory;
+import Factories.PlantFactory;
 import java.util.ArrayList;
 
 /**
@@ -25,7 +27,7 @@ public class Leefgebied {
     
     private final int[][] gebied;
             
-    public Leefgebied(int obstakels, int planten, int carnivoorAantal, int omnivoorAantal, int herbivoorAantal, int nonivoorAantal) 
+    public Leefgebied(int obstakelAantal, int plantAantal, int carnivoorAantal, int omnivoorAantal, int herbivoorAantal, int nonivoorAantal) 
     {              
         this.beesten = new ArrayList<>();
         this.planten = new ArrayList<>();
@@ -37,10 +39,21 @@ public class Leefgebied {
         maakBeesten(BeestType.OMNIVOOR,  omnivoorAantal);
         maakBeesten(BeestType.HERBIVOOR, herbivoorAantal);
         maakBeesten(BeestType.NONIVOOR,  nonivoorAantal);
+        maakPlanten(plantAantal);
+        maakObstakels(obstakelAantal);
+        
     }
 
     public ArrayList<Beest> getBeesten() {
         return beesten;
+    }
+    
+    public ArrayList<Plant> getPlanten() {
+        return planten;
+    }
+    
+    public ArrayList<Obstakel> getObstakels() {
+        return obstakels;
     }
     
     
@@ -84,5 +97,27 @@ public class Leefgebied {
         }
         
         return afgevallenBeesten;
+    }
+
+    private void maakPlanten(int aantal) 
+    {
+        PlantFactory factory = PlantFactory.getInstance();  
+        
+        for(int i=0; i < aantal; i++)
+        {            
+            planten.add(factory.createPlant());
+        }
+        
+    }
+    
+    private void maakObstakels(int aantal) 
+    {
+        ObstakelFactory factory = ObstakelFactory.getInstance();  
+        
+        for(int i=0; i < aantal; i++)
+        {            
+            obstakels.add(factory.createObstakel());
+        }
+        
     }
 }

@@ -4,6 +4,8 @@ import static Enums.BeestType.HERBIVOOR;
 import static Enums.BeestType.OMNIVOOR;
 import Models.Beest;
 import Models.Leefgebied;
+import Models.Obstakel;
+import Models.Plant;
 import Models.WereldModel;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -14,11 +16,8 @@ import java.util.Observer;
  *
  * @author Bart Janisse
  */
-public class WereldView extends javax.swing.JPanel implements Observer{
-  
-
-//    JPanel leefgebied_links;
-//    JPanel leefgebied_rechts;
+public class WereldView extends javax.swing.JPanel implements Observer
+{
     WereldModel model;
      
     /**
@@ -27,16 +26,6 @@ public class WereldView extends javax.swing.JPanel implements Observer{
     public WereldView() {
         initComponents();
         this.setBackground(Color.blue);
-        
-//        leefgebied_links = new JPanel(true);
-//        leefgebied_links.setVisible(true);
-//        leefgebied_links.setBackground(Color.WHITE);
-//        
-//        leefgebied_rechts = new JPanel(true);
-//        leefgebied_rechts.setVisible(true);
-//        leefgebied_rechts.setBackground(Color.WHITE);
-        
-        
     }
     
     @Override
@@ -74,8 +63,24 @@ public class WereldView extends javax.swing.JPanel implements Observer{
                     int offsetX = 110 + i * 640;
                     tekenBeest(g, kleur, X * 5 + offsetX, Y * 4 + 110 );
                 }
-                i++;
                 
+                for(Obstakel obstakel: leefgebied.getObstakels())
+                {
+                    int X = obstakel.getX();
+                    int Y = obstakel.getY();   
+                    int offsetX = 110 + i * 640;
+                    tekenObstakel(g, X * 5 + offsetX, Y * 4 + 110 );
+                }
+                
+                for(Plant plant: leefgebied.getPlanten())
+                {
+                    int X = plant.getX();
+                    int Y = plant.getY();   
+                    int offsetX = 110 + i * 640;
+                    tekenPlant(g, X * 5 + offsetX, Y * 4 + 110 );
+                }
+                
+                i++;   
             }
         }
 
@@ -108,7 +113,6 @@ public class WereldView extends javax.swing.JPanel implements Observer{
     @Override
     public void update(Observable o, Object arg) 
     {
-        
         model = (WereldModel)o;
         this.repaint();            
     }
@@ -125,4 +129,15 @@ public class WereldView extends javax.swing.JPanel implements Observer{
         g.fillRect(posX, posY, 10, 10);
     }
     
+    private void tekenPlant(Graphics g, int posX, int posY)
+    {
+        g.setColor(Color.GREEN);
+        g.fillRect(posX, posY, 10, 10);
+    }
+    
+    private void tekenObstakel(Graphics g, int posX, int posY)
+    {
+        g.setColor(Color.BLACK);
+        g.fillRect(posX, posY, 10, 10);
+    }
 }

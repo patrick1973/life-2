@@ -1,13 +1,27 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Models;
 
 /**
  *
  * @author Bart Janisse
  */
-public class Obstakel {
+public class Obstakel 
+{    
+    int posX;
+    int posY;
+
+    public Obstakel(Positie pos) 
+    {
+        this.posX = pos.getX();
+        this.posY = pos.getY();
+    }
     
+    public int getX() 
+    {
+        return posX;
+    }
+
+    public int getY() 
+    {
+        return posY;
+    }
 }
