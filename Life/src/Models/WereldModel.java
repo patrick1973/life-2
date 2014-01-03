@@ -48,7 +48,7 @@ public class WereldModel extends Observable {
         return 400;
     }
       
-     public ArrayList<Leefgebied> getLeefgebieden()
+    public ArrayList<Leefgebied> getLeefgebieden()
     {
         return leefgebieden;
     }
