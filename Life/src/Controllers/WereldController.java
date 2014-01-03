@@ -18,13 +18,23 @@ public class WereldController extends Thread{
     Observer view;
     int simulatieSnelheid = 1500;
     boolean simulatieLoopt = false;
-   
+    Thread simulatieThread;
 
+   
+    //constructor
     public WereldController(Observer view) {
         this.view = view;
         
     }
 
+    //properties
+    public boolean getSimulatieLoopt()
+    {
+        return simulatieLoopt;
+    }
+    
+    
+    //methodes
     public void cmdLaadSimulatie()
     {     
     }
@@ -45,6 +55,7 @@ public class WereldController extends Thread{
      * start de simulatie, dit wordt gedaan dmv een thread te starten.
      * indien de boolean simulatieLoopt hoog is kan de thread niet opniew gestart
      * worden.
+     * Bij het starten van de simulatie wordt een neiwue thread aan gemaakt.
      */
     public void cmdStartSimulatie()
     {
@@ -52,9 +63,9 @@ public class WereldController extends Thread{
         {
            if (!simulatieLoopt)
            {
-                this.start();
-           }
-            
+               simulatieThread = new Thread(this);
+               simulatieThread.start();
+           } 
             simulatieLoopt= true;
         }
         catch ( IllegalThreadStateException ex)
@@ -65,7 +76,12 @@ public class WereldController extends Thread{
     
     public void cmdPauzeSimulatie()
     {
-        
+        try {
+            Thread.currentThread().interrupt();
+            simulatieLoopt = false;
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null,"Er is iets mis gegaan met het pauzeren van de Thread : "+ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     public void cmdSetSnelheid(int s)
@@ -82,19 +98,18 @@ public class WereldController extends Thread{
     public void run() {
         try
             {
-                while (true)
+                while (!Thread.currentThread().isInterrupted() && simulatieLoopt)
                { 
                    model.simulatieStap();
-                   Thread.sleep(this.simulatieSnelheid);   
+                   this.sleep(this.simulatieSnelheid); 
                 }
             }
             catch(InterruptedException ex)
             {
                 JOptionPane.showMessageDialog(null,"Er is iets mis gegaan met Threads : " + ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
             }
-            catch (Exception ex)
-            {
-                JOptionPane.showMessageDialog(null,"Er is iets mis gegaan : " + ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
+            finally
+            {                
             }
     }
     

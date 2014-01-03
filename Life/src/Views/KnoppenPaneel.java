@@ -6,6 +6,7 @@ package Views;
 
 import Controllers.WereldController;
 import GUI_algemeen.SimulatieGegevensDialog;
+import java.awt.Color;
 
 /**
  *
@@ -21,6 +22,8 @@ public class KnoppenPaneel extends javax.swing.JPanel {
         initComponents();
         // bij het aanmaken van het beginschem vul het textveld.
         this.jTextField2.setText(this.jSliderSimulationSpeed.getValue()+"");
+        this.jTextFieldRunningIndicator.setBackground(Color.blue);
+        this.jTextFieldRunningIndicator.setText("simulatie idle");
     }
     
     public void setController(WereldController controller) {
@@ -45,6 +48,7 @@ public class KnoppenPaneel extends javax.swing.JPanel {
         jSliderSimulationSpeed = new javax.swing.JSlider();
         jLabel1 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
+        jTextFieldRunningIndicator = new javax.swing.JTextField();
 
         btnLoadSimulation.setText("Load simulatie");
         btnLoadSimulation.addActionListener(new java.awt.event.ActionListener() {
@@ -99,9 +103,14 @@ public class KnoppenPaneel extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText(" Simulatie snelheid ");
         jLabel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jTextFieldRunningIndicator.setEditable(false);
+        jTextFieldRunningIndicator.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jTextFieldRunningIndicator.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldRunningIndicator.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -122,38 +131,40 @@ public class KnoppenPaneel extends javax.swing.JPanel {
                     .addComponent(btnNewSimulation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSliderSimulationSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
+                    .addComponent(jSliderSimulationSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, 377, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextFieldRunningIndicator, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnLoadSimulation)
-                            .addComponent(btnNewSimulation)
-                            .addComponent(btnStartSimulation))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnSaveSimultation)
-                            .addComponent(btnExitSimulation)
-                            .addComponent(btnPauzeSimulation)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jSliderSimulationSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnLoadSimulation)
+                    .addComponent(btnNewSimulation)
+                    .addComponent(btnStartSimulation))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnSaveSimultation)
+                    .addComponent(btnExitSimulation)
+                    .addComponent(btnPauzeSimulation))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldRunningIndicator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSliderSimulationSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -171,10 +182,20 @@ public class KnoppenPaneel extends javax.swing.JPanel {
 
     private void btnStartSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartSimulationActionPerformed
         controller.cmdStartSimulatie();
+        if (controller.getSimulatieLoopt())
+        {
+           this.jTextFieldRunningIndicator.setBackground(Color.green);
+           this.jTextFieldRunningIndicator.setText("simulatie running");
+        }
     }//GEN-LAST:event_btnStartSimulationActionPerformed
 
     private void btnPauzeSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPauzeSimulationActionPerformed
         controller.cmdPauzeSimulatie();
+        if (!controller.getSimulatieLoopt())
+        {
+           this.jTextFieldRunningIndicator.setBackground(Color.red);
+           this.jTextFieldRunningIndicator.setText("simulatie gepauzeerd");
+        }
     }//GEN-LAST:event_btnPauzeSimulationActionPerformed
 
     private void btnNewSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewSimulationActionPerformed
@@ -206,5 +227,6 @@ public class KnoppenPaneel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSlider jSliderSimulationSpeed;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextFieldRunningIndicator;
     // End of variables declaration//GEN-END:variables
 }
