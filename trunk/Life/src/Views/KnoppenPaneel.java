@@ -19,6 +19,8 @@ public class KnoppenPaneel extends javax.swing.JPanel {
      */
     public KnoppenPaneel() {
         initComponents();
+        // bij het aanmaken van het beginschem vul het textveld.
+        this.jTextField2.setText(this.jSliderSimulationSpeed.getValue()+"");
     }
     
     public void setController(WereldController controller) {
@@ -42,6 +44,7 @@ public class KnoppenPaneel extends javax.swing.JPanel {
         btnExitSimulation = new javax.swing.JButton();
         jSliderSimulationSpeed = new javax.swing.JSlider();
         jLabel1 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
 
         btnLoadSimulation.setText("Load simulatie");
         btnLoadSimulation.addActionListener(new java.awt.event.ActionListener() {
@@ -85,13 +88,14 @@ public class KnoppenPaneel extends javax.swing.JPanel {
             }
         });
 
-        jSliderSimulationSpeed.setValue(0);
+        jSliderSimulationSpeed.setMaximum(3000);
+        jSliderSimulationSpeed.setMinimum(1);
+        jSliderSimulationSpeed.setToolTipText("");
+        jSliderSimulationSpeed.setValue(1500);
         jSliderSimulationSpeed.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jSliderSimulationSpeed.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-                jSliderSimulationSpeedCaretPositionChanged(evt);
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+        jSliderSimulationSpeed.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jSliderSimulationSpeedStateChanged(evt);
             }
         });
 
@@ -118,11 +122,13 @@ public class KnoppenPaneel extends javax.swing.JPanel {
                     .addComponent(btnNewSimulation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSliderSimulationSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSliderSimulationSpeed, javax.swing.GroupLayout.DEFAULT_SIZE, 293, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 88, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)
-                        .addGap(0, 88, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -142,10 +148,12 @@ public class KnoppenPaneel extends javax.swing.JPanel {
                             .addComponent(btnPauzeSimulation)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jSliderSimulationSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -181,10 +189,12 @@ public class KnoppenPaneel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnNewSimulationActionPerformed
 
-    private void jSliderSimulationSpeedCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jSliderSimulationSpeedCaretPositionChanged
-        int speed = jSliderSimulationSpeed.getValue();
-        controller.cmdSetSnelheid(speed);
-    }//GEN-LAST:event_jSliderSimulationSpeedCaretPositionChanged
+    private void jSliderSimulationSpeedStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderSimulationSpeedStateChanged
+
+       int speed = jSliderSimulationSpeed.getValue();
+       controller.cmdSetSnelheid(speed);
+       this.jTextField2.setText(""+speed);
+    }//GEN-LAST:event_jSliderSimulationSpeedStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExitSimulation;
@@ -195,5 +205,6 @@ public class KnoppenPaneel extends javax.swing.JPanel {
     private javax.swing.JButton btnStartSimulation;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSlider jSliderSimulationSpeed;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }
