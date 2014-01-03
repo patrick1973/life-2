@@ -40,7 +40,7 @@ public class SimulatieGegevensDialog extends javax.swing.JDialog {
         private final instellingenPlant instellingenPlanten       = new instellingenPlant();
 
     /**
-     * A return status code - returned if Cancel button has been pressed
+     *return status code - indien cancel button gedrukt is
      */
     public static final int RET_CANCEL = 0;
     /**
