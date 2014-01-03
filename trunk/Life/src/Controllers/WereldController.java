@@ -28,6 +28,11 @@ public class WereldController extends Thread{
     }
 
     //properties
+    /**
+     * getter om de gui te laten weten of de simulatie gestart of gepauzeerd is.
+     * Deze was nodig voor het status venstertje.
+     * @return boolean simulatieLoopt
+     */
     public boolean getSimulatieLoopt()
     {
         return simulatieLoopt;
@@ -35,10 +40,16 @@ public class WereldController extends Thread{
     
     
     //methodes
+    /**
+     * Methode om de simulatie vanuit een data base te laden..
+     */
     public void cmdLaadSimulatie()
     {     
     }
     
+    /**
+     * Methode om naar de database te schrijven.
+     */
     public void cmdSaveSimulatie()
     {  
     }
