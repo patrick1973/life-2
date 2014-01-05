@@ -69,8 +69,22 @@ public class Beest {
 
     public void loop()
     {
+        Positie vorige = new Positie();
+        
+        vorige.X = positie.X;
+        vorige.Y = positie.Y;
+        
         positie.X += richting.getVerplaatsingX();
         positie.Y += richting.getVerplaatsingY();
+        
+        // Als beest onvoldoende energie heeft dan moet deze binnen leefgebied blijven
+//        if(actueleEnergie < (0.7 * maxEnergie))
+//        {
+//            if (positie.X >= 100 || positie.X < 0 || positie.Y >= 100 || positie.Y < 0)
+//            {
+//                this.positie = vorige;
+//            }
+//        }
     }
     
     public void eet(int hoeveelheid)

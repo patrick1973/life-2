@@ -20,28 +20,31 @@ public class Leefgebied {
     private static final int SIZE_X = 100;
     private static final int SIZE_Y = 100;
     
-    
+    private int topX;
+    private int topY;
     private ArrayList<Beest> beesten;
     private ArrayList<Plant> planten;
     private ArrayList<Obstakel> obstakels;
     
-    private final int[][] gebied;
+    //private final int[][] gebied;
             
-    public Leefgebied(int obstakelAantal, int plantAantal, int carnivoorAantal, int omnivoorAantal, int herbivoorAantal, int nonivoorAantal) 
+    public Leefgebied(Positie p, int obstakelAantal, int plantAantal, int carnivoorAantal, int omnivoorAantal, int herbivoorAantal, int nonivoorAantal) 
     {              
+        this.topX = p.X;
+        this.topY = p.Y;
+        
         this.beesten = new ArrayList<>();
         this.planten = new ArrayList<>();
         this.obstakels = new ArrayList<>();
         
-        gebied = new int[SIZE_X][SIZE_Y];
+        //gebied = new int[SIZE_X][SIZE_Y];
         
         maakBeesten(BeestType.CARNIVOOR, carnivoorAantal);
         maakBeesten(BeestType.OMNIVOOR,  omnivoorAantal);
         maakBeesten(BeestType.HERBIVOOR, herbivoorAantal);
         maakBeesten(BeestType.NONIVOOR,  nonivoorAantal);
         maakPlanten(plantAantal);
-        maakObstakels(obstakelAantal);
-        
+        maakObstakels(obstakelAantal);   
     }
 
     public ArrayList<Beest> getBeesten() {
@@ -106,9 +109,18 @@ public class Leefgebied {
         {
             beest.loop();
             
-            if(beest.getPositie().X > SIZE_X || beest.getPositie().X < 0 ||
-               beest.getPositie().Y > SIZE_Y || beest.getPositie().Y < 0)
+            if(beest.getPositie().X >= SIZE_X || beest.getPositie().X < 0 ||
+               beest.getPositie().Y >= SIZE_Y || beest.getPositie().Y < 0)
             {
+                if(beest.getPositie().X >= SIZE_X || beest.getPositie().X < 0)
+                {
+                    beest.getPositie().X += topX;
+                }
+                if(beest.getPositie().Y >= SIZE_Y || beest.getPositie().Y < 0)
+                {
+                    beest.getPositie().Y += topY;
+                }
+                
                 afgevallenBeesten.add(beest);
             }
         }
