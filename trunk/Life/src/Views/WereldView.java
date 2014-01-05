@@ -104,8 +104,10 @@ public class WereldView extends javax.swing.JPanel implements Observer
                                      break;
                     default: kleur = Color.BLACK;
                 }
-                int offsetX = 110;
-                tekenBeest(g, kleur, X * 5 + offsetX, Y * 4 + 110 );
+//                int offsetX = 110;
+//                tekenBeest(g, kleur, X * 5 + offsetX, Y * 4 + 110 );
+                
+                tekenBeest(g, kleur, X * 5, Y * 4);
             }
         }
 
@@ -145,7 +147,7 @@ public class WereldView extends javax.swing.JPanel implements Observer
     private void tekenLeefgebied(Graphics g, int posX, int posY)
     {
         g.setColor(Color.WHITE);
-        g.fillRect(posX, posY, 500, 400);   
+        g.fillRect(posX, posY, 506, 406);   
     }
     
     private void tekenBeest(Graphics g, Color color, int posX, int posY)

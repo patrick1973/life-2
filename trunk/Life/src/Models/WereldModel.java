@@ -32,8 +32,8 @@ public class WereldModel extends Observable {
         int herbivoren = (int)(elementen * 0.1  / 2.0);
         int nonivoren =  (int)(elementen * 0.05 / 2.0);
          
-        leefgebieden.add(new Leefgebied(obstakels, planten, carnivoren, omnivoren, herbivoren, nonivoren));
-        leefgebieden.add(new Leefgebied(obstakels, planten, carnivoren, omnivoren, herbivoren, nonivoren));
+        leefgebieden.add(new Leefgebied(new Positie( 50, 50), obstakels, planten, carnivoren, omnivoren, herbivoren, nonivoren));
+        leefgebieden.add(new Leefgebied(new Positie(200, 50), obstakels, planten, carnivoren, omnivoren, herbivoren, nonivoren));
         
         this.setChanged();
         this.notifyObservers();
@@ -41,12 +41,12 @@ public class WereldModel extends Observable {
     
     public int getLeefgebiedBreedte()
     {
-        return 500;
+        return 350;
     }
     
     public int getLeefgebiedHoogte()
     {
-        return 400;
+        return 200;
     }
       
     public ArrayList<Leefgebied> getLeefgebieden()

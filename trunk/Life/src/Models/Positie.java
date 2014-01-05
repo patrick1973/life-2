@@ -23,6 +23,12 @@ public class Positie {
          Y = ramdom.nextInt(100); 
     }
     
+    public Positie(int x, int y) 
+    {
+         X = x;
+         Y = y; 
+    }
+    
     /*
      * Geeft de actuele X waarde terug
      */
