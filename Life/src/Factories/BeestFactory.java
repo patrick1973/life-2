@@ -5,7 +5,6 @@ import Models.Beest;
 import Models.Positie;
 import Enums.Richting;
 import GUI_algemeen.SimulatieGegevensDialog;
-import javax.swing.JDialog;
 
 /**
  *
@@ -14,6 +13,7 @@ import javax.swing.JDialog;
 public class BeestFactory {
     
     private static BeestFactory instance = new BeestFactory();
+    SimulatieGegevensDialog gegevens = new SimulatieGegevensDialog(null, true);
    
     /**
      * Private constructor
@@ -39,12 +39,33 @@ public class BeestFactory {
     
     public Beest createBeest(BeestType beestType)
     {       
-//        switch(beestType)
-//        {
-//            case OMNIVOOR : p = main.getparam;
-//        }
+          int poten, maxEnergie, maxGewicht;
+                  
+        switch(beestType)
+        {
+            case CARNIVOOR  :   poten = gegevens.getCarnivoorAantalPoten();
+                                maxEnergie = gegevens.getCarnivoorMaxEnergie();
+                                maxGewicht = gegevens.getCarnivoorMaxGewicht();
+                                break;
+            case HERBIVOOR  :   poten = gegevens.getHerbivoorAantalPoten();
+                                maxEnergie = gegevens.getHerbivoorMaxEnergie();
+                                maxGewicht = gegevens.getHerbivoorMaxGewicht();
+                                break;
+            case OMNIVOOR   :   poten = gegevens.getOmnivoorAantalPoten();
+                                maxEnergie = gegevens.getOmnivoorMaxEnergie();
+                                maxGewicht = gegevens.getOmnivoorMaxGewicht();
+                                break;
+            case NONIVOOR   :   poten = gegevens.getNonivoorAantalPoten();
+                                maxEnergie = gegevens.getNonivoorMaxEnergie();
+                                maxGewicht = gegevens.getNonivoorMaxGewicht();
+                                break;
+            default         :   poten = 20;
+                                maxEnergie = 20;
+                                maxGewicht = 20;
+                                break;  
+        }
         
         // TODO hoe krijgen we de settings vanuit de GUI hier ?
-        return new Beest(beestType, new Positie(), Richting.getRandom(), 6, 1000, 1000);
+        return new Beest(beestType, new Positie(), Richting.getRandom(), poten, maxGewicht, maxEnergie);
     }
 }
