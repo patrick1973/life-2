@@ -4,7 +4,9 @@
  */
 package Controllers;
 
+import DataAcces.DatabaseBewerkingen;
 import Models.WereldModel;
+import java.sql.Connection;
 import java.util.Observer;
 import javax.swing.JOptionPane;
 
@@ -16,9 +18,11 @@ public class WereldController extends Thread{
     
     WereldModel model;
     Observer view;
+    DatabaseBewerkingen dbewerkingen = new DatabaseBewerkingen();
     int simulatieSnelheid = 1500;
     boolean simulatieLoopt = false;
     Thread simulatieThread;
+    
 
    
     //constructor
@@ -44,7 +48,8 @@ public class WereldController extends Thread{
      * Methode om de simulatie vanuit een data base te laden..
      */
     public void cmdLaadSimulatie()
-    {     
+    {   
+        dbewerkingen.laadSqlDatabase();
     }
     
     /**
@@ -52,6 +57,13 @@ public class WereldController extends Thread{
      */
     public void cmdSaveSimulatie()
     {  
+        if (!dbewerkingen.checkDBExists("LifeDataBase"))
+        {
+            dbewerkingen.maakSqlDatabase("LifeDataBase");
+            
+            System.out.print("Moet nog aangemaakt worden");
+            
+        }
     }
     
     public void cmdNieuweSimulatie()

@@ -13,6 +13,7 @@ import Models.WereldModel;
 public class Opslag {
 
     public Opslag() {
+        
     }
     
     public void SaveWereld(WereldModel w)
