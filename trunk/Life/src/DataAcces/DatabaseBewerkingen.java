@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,11 +25,43 @@ public class DatabaseBewerkingen {
 
     public void maakSqlDatabase(String naam)
     {
-        Connection con = openSQLConnection();
-        if (con != null)
+        if (!checkDBExists(naam))
         {
+            int response = JOptionPane.showConfirmDialog(null, "Database bestaat niet, wilt u een nieuwe Database aanmaken? ", "Maak een keuze", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if (response == JOptionPane.YES_OPTION)
+            {
+                try
+                {
+                    Connection conn = openSQLConnection();
+                    if (conn != null)
+                    {
+                        // maak de SQL statments aan
+                        Statement st = conn.createStatement();
+                        String createDatabase = "CREATE DATABASE " + naam + ";";
+
+                        // maak de database aan
+                        st.executeUpdate(createDatabase);
+                        // selecteer de database
+                        st.executeUpdate("USE " + naam + ";");
+                        // maak een tabel PERSOON aan
+                        JOptionPane.showMessageDialog(null, "Database : "+ naam + " is aangemaakt");
+                    }
+                }
+                catch (SQLException ex)
+                {
+                    JOptionPane.showMessageDialog(null, "SQL problemen : " + ex.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else
+        {
+             int response1 = JOptionPane.showConfirmDialog(null, "Database bestaat al, wilt u de database verwijderen? " + naam, "Maak een keuze", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+            if (response1 == JOptionPane.YES_OPTION)
+            {
+                DropDatabase(naam);
+            }
         }
     }
+    
 
 /**
  * Deze methode is gemaakt om een database van de server te verwijderen

@@ -57,13 +57,7 @@ public class WereldController extends Thread{
      */
     public void cmdSaveSimulatie()
     {  
-        if (!dbewerkingen.checkDBExists("LifeDataBase"))
-        {
-            dbewerkingen.maakSqlDatabase("LifeDataBase");
-            
-            System.out.print("Moet nog aangemaakt worden");
-            
-        }
+       dbewerkingen.maakSqlDatabase("LifeDatabase");
     }
     
     public void cmdNieuweSimulatie()
