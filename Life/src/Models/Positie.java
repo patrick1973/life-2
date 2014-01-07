@@ -20,7 +20,7 @@ public class Positie {
     public Positie() 
     {
          X = ramdom.nextInt(100);
-         Y = ramdom.nextInt(100); 
+         Y = ramdom.nextInt(200); 
     }
     
     public Positie(int x, int y) 

@@ -15,12 +15,14 @@ import java.util.Observable;
 public class WereldModel extends Observable {
     
     private ArrayList<Leefgebied> leefgebieden;
-    private ArrayList<Beest> water;
+    Water water;
+    //private ArrayList<Beest> water;
     
     public WereldModel() 
     {
         leefgebieden = new ArrayList<>();
-        water = new ArrayList<>();
+        water = new Water();
+        //water = new ArrayList<>();
     }
     
     public void setAantalElementen(int elementen)
@@ -56,7 +58,7 @@ public class WereldModel extends Observable {
     
     public ArrayList<Beest> getWater()
     {
-        return water;
+        return water.getBeesten();
     }
     
     public void simulatieStap()
@@ -69,9 +71,12 @@ public class WereldModel extends Observable {
         
             for(Beest beest : afgevallenBeesten)
             {
-                water.add(beest);
+                water.getBeesten().add(beest);
             }
         }
+        
+        afgevallenBeesten = water.simulatieStap();
+        
         this.setChanged();
         this.notifyObservers();
     }

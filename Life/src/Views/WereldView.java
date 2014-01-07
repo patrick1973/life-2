@@ -35,28 +35,31 @@ public class WereldView extends javax.swing.JPanel implements Observer
     {
         super.paintComponent(g);
         
-        tekenLeefgebied(g, 110, 110);
-        tekenLeefgebied(g, 750, 110);
+        //tekenLeefgebied(g, 110, 110);
+       // tekenLeefgebied(g, 750, 110);
         
         if(wereldModel != null)
         {
             int i = 0;
             for(Leefgebied leefgebied: wereldModel.getLeefgebieden())
-            {                
+            {           
+                tekenLeefgebied(g, leefgebied.getTopX(), leefgebied.getTopY());
+                int offsetX = leefgebied.getTopX() * 4;
+                int offsetY = leefgebied.getTopY() * 2;
+                // In het leefgebied hebben alle objecten een relatieve positie.
+                // Dus t.o.v. de linker bovenhoek van het leefgebied
                 for(Obstakel obstakel: leefgebied.getObstakels())
                 {
                     int X = obstakel.getX();
                     int Y = obstakel.getY();   
-                    int offsetX = 110 + i * 640;
-                    tekenObstakel(g, X * 5 + offsetX, Y * 4 + 110 );
+                    tekenObstakel(g, X * 4 + offsetX, Y * 2 + offsetY );
                 }
                 
                 for(Plant plant: leefgebied.getPlanten())
                 {
                     int X = plant.getX();
                     int Y = plant.getY();   
-                    int offsetX = 110 + i * 640;
-                    tekenPlant(g, X * 5 + offsetX, Y * 4 + 110 );
+                    tekenPlant(g, X * 4 + offsetX, Y * 2 + offsetY );
                 }
                 
                 for(Beest beest: leefgebied.getBeesten())
@@ -78,10 +81,8 @@ public class WereldView extends javax.swing.JPanel implements Observer
                                          break;
                         default: kleur = Color.BLACK;
                     }
-                    int offsetX = 110 + i * 640;
-                    tekenBeest(g, kleur, X * 5 + offsetX, Y * 4 + 110 );
+                    tekenBeest(g, kleur, X * 4 + offsetX, Y * 2 + offsetY );
                 }
-                
                 i++;   
             }
             
@@ -104,10 +105,8 @@ public class WereldView extends javax.swing.JPanel implements Observer
                                      break;
                     default: kleur = Color.BLACK;
                 }
-//                int offsetX = 110;
-//                tekenBeest(g, kleur, X * 5 + offsetX, Y * 4 + 110 );
                 
-                tekenBeest(g, kleur, X * 5, Y * 4);
+                tekenBeest(g, kleur, X * 4, Y * 2);
             }
         }
 
@@ -147,24 +146,24 @@ public class WereldView extends javax.swing.JPanel implements Observer
     private void tekenLeefgebied(Graphics g, int posX, int posY)
     {
         g.setColor(Color.WHITE);
-        g.fillRect(posX, posY, 506, 406);   
+        g.fillRect(posX * 4, posY * 2, 100 * 4, 200 * 2);   
     }
     
     private void tekenBeest(Graphics g, Color color, int posX, int posY)
     {
         g.setColor(color);
-        g.fillRect(posX, posY, 10, 10);
+        g.fillRect(posX, posY, 5, 5);
     }
     
     private void tekenPlant(Graphics g, int posX, int posY)
     {
         g.setColor(Color.GREEN);
-        g.fillRect(posX, posY, 10, 10);
+        g.fillRect(posX, posY, 5, 5);
     }
     
     private void tekenObstakel(Graphics g, int posX, int posY)
     {
         g.setColor(Color.BLACK);
-        g.fillRect(posX, posY, 10, 10);
+        g.fillRect(posX, posY, 5, 5);
     }
 }

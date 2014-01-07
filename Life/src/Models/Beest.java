@@ -12,8 +12,6 @@ import Gedrag.IGedrag;
 public class Beest {
 
     BeestType type;
-    int positieX;
-    int positieY;
     int poten;
     int maxGewicht; 
     int maxEnergie;

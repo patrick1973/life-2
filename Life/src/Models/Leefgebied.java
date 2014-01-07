@@ -5,7 +5,6 @@
 package Models;
 
 import Enums.BeestType;
-import Enums.Richting;
 import Factories.BeestFactory;
 import Factories.ObstakelFactory;
 import Factories.PlantFactory;
@@ -18,7 +17,7 @@ import java.util.ArrayList;
 public class Leefgebied {
 
     private static final int SIZE_X = 100;
-    private static final int SIZE_Y = 100;
+    private static final int SIZE_Y = 200;
     
     private int topX;
     private int topY;
@@ -47,6 +46,16 @@ public class Leefgebied {
         maakObstakels(obstakelAantal);   
     }
 
+    public int getTopX() {
+        return topX;
+    }
+
+    public int getTopY() {
+        return topY;
+    }
+
+    
+    
     public ArrayList<Beest> getBeesten() {
         return beesten;
     }
@@ -112,12 +121,9 @@ public class Leefgebied {
             if(beest.getPositie().X >= SIZE_X || beest.getPositie().X < 0 ||
                beest.getPositie().Y >= SIZE_Y || beest.getPositie().Y < 0)
             {
-                if(beest.getPositie().X >= SIZE_X || beest.getPositie().X < 0)
+                if(beest.getPositie().X >= SIZE_X || beest.getPositie().X < SIZE_X || beest.getPositie().Y >= SIZE_Y || beest.getPositie().Y < 0)
                 {
                     beest.getPositie().X += topX;
-                }
-                if(beest.getPositie().Y >= SIZE_Y || beest.getPositie().Y < 0)
-                {
                     beest.getPositie().Y += topY;
                 }
                 
