@@ -21,7 +21,6 @@ public class Beest {
     
     public Beest(BeestType type, Positie startPositie, Richting startRichting, int poten, int maxGewicht, int maxEnergie) 
     {
-        //this.gedrag = type.getGedrag();
         this.type = type;
         this.poten = poten;
         this.maxGewicht = maxGewicht;
