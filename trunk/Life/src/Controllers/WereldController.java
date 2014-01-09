@@ -6,7 +6,6 @@ package Controllers;
 
 import DataAcces.DatabaseBewerkingen;
 import Models.WereldModel;
-import java.sql.Connection;
 import java.util.Observer;
 import javax.swing.JOptionPane;
 
@@ -72,7 +71,7 @@ public class WereldController extends Thread{
      * start de simulatie, dit wordt gedaan dmv een thread te starten.
      * indien de boolean simulatieLoopt hoog is kan de thread niet opniew gestart
      * worden.
-     * Bij het starten van de simulatie wordt een neiwue thread aan gemaakt.
+     * Bij het starten van de simulatie wordt een nieuwe thread aan gemaakt.
      */
     public void cmdStartSimulatie()
     {
@@ -125,9 +124,7 @@ public class WereldController extends Thread{
             {
                 JOptionPane.showMessageDialog(null,"Er is iets mis gegaan met Threads : " + ex.getMessage(),"ERROR",JOptionPane.ERROR_MESSAGE);
             }
-            finally
-            {                
-            }
+            
     }
     
 }
