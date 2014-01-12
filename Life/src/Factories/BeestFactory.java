@@ -36,7 +36,12 @@ public class BeestFactory {
     {       
         return new Beest(beestType, positie, richting, poten, maxGewicht, maxEnergie);
     }
-    
+    /**
+     * Creert een nieuw beest op basis van het beesttype met random richting.
+     * De andere setting komen van uit de intellingen
+     * @param beestType
+     * @return 
+     */
     public Beest createBeest(BeestType beestType)
     {       
           int poten, maxEnergie, maxGewicht;
@@ -65,7 +70,6 @@ public class BeestFactory {
                                 break;  
         }
         
-        // TODO hoe krijgen we de settings vanuit de GUI hier ?
         return new Beest(beestType, new Positie(), Richting.getRandom(), poten, maxGewicht, maxEnergie);
     }
 }
