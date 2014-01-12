@@ -19,6 +19,15 @@ public class Beest {
     Positie positie;
     Richting richting;
     
+    /**
+     * maak een beest object aan
+     * @param type
+     * @param startPositie
+     * @param startRichting
+     * @param poten
+     * @param maxGewicht
+     * @param maxEnergie 
+     */
     public Beest(BeestType type, Positie startPositie, Richting startRichting, int poten, int maxGewicht, int maxEnergie) 
     {
         this.type = type;
@@ -28,42 +37,67 @@ public class Beest {
         this.positie = startPositie;
         this.richting = startRichting;
     }
-        
+    
+    /**
+     * @return het type gedrag van het beest
+     */
     public BeestType getType()
     {
         return this.type;
     }
     
+    /**
+     * @return het aantal poten van het beest
+     */
     public int getPoten()
     {
         return this.poten;
     }
     
+    /**
+     * @return het maximale gewicht van het beest
+     */
     public int getMaxGewicht() 
     {
         return maxGewicht;
     }
 
+    /**
+     * @return het maximale energie niveau van het beest.
+     */
     public int getMaxEnergie() 
     {
         return maxEnergie;
     }
 
+    /**
+     * @return de positie van het beest.
+     */
     public Positie getPositie() 
     {
         return positie;
     }
 
+    /**
+     * @return de richting van het beest
+     */
     public Richting getRichting() 
     {
         return richting;
     }
     
+    /**
+     * set de richting van het beest
+     * @param r 
+     */
     public void setRichting(Richting r)
     {
         this.richting = r;
     }
 
+    /**
+     * deze methode laat het beest lopen
+     */
     public void loop()
     {
         Positie vorige = new Positie();
@@ -84,6 +118,10 @@ public class Beest {
 //        }
     }
     
+    /**
+     * laat het beest een hoeveelheid eten
+     * @param hoeveelheid 
+     */
     public void eet(int hoeveelheid)
     {
         IGedrag gedrag = this.type.getGedrag();

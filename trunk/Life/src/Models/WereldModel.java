@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Models;
 
 import java.util.ArrayList;
@@ -15,15 +12,23 @@ public class WereldModel extends Observable {
     
     private ArrayList<Leefgebied> leefgebieden;
     Water water;
-    //private ArrayList<Beest> water;
     
+    /** 
+     * Creert het wereld model met een collectie van leefgebieden en water
+     */
     public WereldModel() 
     {
         leefgebieden = new ArrayList<>();
         water = new Water();
-        //water = new ArrayList<>();
     }
     
+    /**
+     * het  totaal aantal elementen onderverdelen en daarna verdelen over 2 
+     * leefgebieden. en de elementen toevoegen aan de leeftgebieden.
+     * Tevens zorgt deze methode ook voor het updaten van de views door het
+     * aanroepen van de overgeerfde methodes setChanged() en notifyObservers()
+     * @param elementen 
+     */
     public void setAantalElementen(int elementen)
     {
         int planten =    (int)(elementen * 0.3  / 2.0);
@@ -40,26 +45,45 @@ public class WereldModel extends Observable {
         this.notifyObservers();
     }
     
+    /**
+     * @return de breedte van het leef gebied
+     */
     public int getLeefgebiedBreedte()
     {
         return 350;
     }
     
+    /**
+     * @return de hoogte van het leefgebied
+     */
     public int getLeefgebiedHoogte()
     {
         return 200;
     }
-      
+    
+    /**
+     * @return een collectie van leefgebieden
+     */
     public ArrayList<Leefgebied> getLeefgebieden()
     {
         return leefgebieden;
     }
     
+    /**
+     * @return een collectie van beesten die zich in het water bevinden.
+     */
     public ArrayList<Beest> getWater()
     {
         return water.getBeesten();
     }
     
+    /**
+     * De simulatieStap methode zorgt er voor dat de beesten door het leefgebied
+     * verplaatsen en dat de beesten door het water verplaatsen en regelt de 
+     * overgang van leefgebied naar water
+     * En zorgt er voor dat de view wordt geupdate door de overgeerfde methodes
+     * setChanged() en notifyObservers();
+     */
     public void simulatieStap()
     {
         ArrayList<Beest> afgevallenBeesten = new ArrayList<>();
