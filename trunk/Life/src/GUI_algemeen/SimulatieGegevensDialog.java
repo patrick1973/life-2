@@ -358,11 +358,18 @@ public class SimulatieGegevensDialog extends javax.swing.JDialog {
         return this.instellingenPlanten.getVoedingsWaarde();
     }
     
+    /**
+     * Deze methode leest een XML file met instellingen. Zodat tijdens het aan
+     * maken van een nieuwe simulatie voor gedefineerde waarde geladen kunnen
+     * worden. Door het gebruik van een XML file kunnen de gegevens achter af
+     * ook nog gewijzigd worden. 
+     * 
+     */
     private void readXMLfile()
     {
         try
         {
-         DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance();
+         DocumentBuilderFactory docBuilderFactory = DocumentBuilderFactory.newInstance(); 
          DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
          Document doc = docBuilder.parse (new File("LifeSettings.xml"));
          
