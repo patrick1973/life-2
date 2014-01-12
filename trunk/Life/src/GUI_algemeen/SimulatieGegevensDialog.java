@@ -362,8 +362,7 @@ public class SimulatieGegevensDialog extends javax.swing.JDialog {
      * Deze methode leest een XML file met instellingen. Zodat tijdens het aan
      * maken van een nieuwe simulatie voor gedefineerde waarde geladen kunnen
      * worden. Door het gebruik van een XML file kunnen de gegevens achter af
-     * ook nog gewijzigd worden. 
-     * 
+     * ook nog gewijzigd worden.  
      */
     private void readXMLfile()
     {
