@@ -13,14 +13,28 @@ import javax.swing.JOptionPane;
  */
 public class DatabaseBewerkingen {
   
+    /**
+     *De methode LaadSqlDatabase(), het is de bedoeling dat deze methode de
+     * database met simulatie gegevens van de SQL database server in leest 
+     * als er en connectie met de server is 
+     */
     public void laadSqlDatabase()
     {
         Connection con = openSQLConnection();
         if (con != null)
         {
+            // Code om de gegevens in te lezen
         }
     }
 
+    /**
+     * Wanneer men een simulatie wil opslaan, dan wordt er eerst gekeken of er
+     * al een database bestaat met dezelfde naam. Indien de naam al bestaat 
+     * krijgt de gebruiker de keuze om de bestande database te verwijderen. 
+     * Indien de naam niet bestaat maakt deze methode een database aan met de 
+     * bijbehorende tabellen.
+     * @param naam 
+     */
     public void maakSqlDatabase(String naam)
     {
         if (!checkDBExists(naam))
