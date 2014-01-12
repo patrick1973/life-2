@@ -28,6 +28,10 @@ public class ObstakelFactory {
     }
     
     
+    /**
+     * creert nieuw obstakel met random positie
+     * @return 
+     */
     public Obstakel createObstakel()
     {       
         return new Obstakel(new Positie());
