@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Views;
 
 import Controllers.WereldController;
@@ -16,7 +13,9 @@ public class KnoppenPaneel extends javax.swing.JPanel {
 
     WereldController controller;
     /**
-     * Creates new form ControlPanel
+     * maak een nieuw knoppen panneel aan.
+     * HEt knoppen panneel wordt later als een bean gebruikt om de siumulatie 
+     * te bedienen. de bean wordt in de MainViewFrame geplaatst.
      */
     public KnoppenPaneel() {
         initComponents();
@@ -26,6 +25,10 @@ public class KnoppenPaneel extends javax.swing.JPanel {
         this.jTextFieldRunningIndicator.setText("simulatie idle");
     }
     
+    /**
+     * Set de controller die gebruikt dient te worden
+     * @param controller 
+     */
     public void setController(WereldController controller) {
         this.controller = controller;
     }
@@ -169,18 +172,31 @@ public class KnoppenPaneel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLoadSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadSimulationActionPerformed
+        /**
+         * Met dit even wordt een simulatie uit de database geladen
+         */
         controller.cmdLaadSimulatie();
     }//GEN-LAST:event_btnLoadSimulationActionPerformed
 
     private void btnSaveSimultationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveSimultationActionPerformed
+        /**
+         * Met dit event wordt een simulatie opgelagen in de database
+         */
         controller.cmdSaveSimulatie();
     }//GEN-LAST:event_btnSaveSimultationActionPerformed
 
     private void btnExitSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitSimulationActionPerformed
+        /**
+         * Met dit even wordt de applicatie afgesloten
+         */
         controller.cmdExit();
     }//GEN-LAST:event_btnExitSimulationActionPerformed
 
     private void btnStartSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStartSimulationActionPerformed
+        /**
+         * Met dit event wordt de simulatie gestart en als de simulatie
+         * gestart is wordt de indicator en de text aangepast in het scherm
+         */
         controller.cmdStartSimulatie();
         if (controller.getSimulatieLoopt())
         {
@@ -190,6 +206,10 @@ public class KnoppenPaneel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnStartSimulationActionPerformed
 
     private void btnPauzeSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPauzeSimulationActionPerformed
+        /**
+         * Met dit event wordt de simulatie gepauzeerd en als de simulatie
+         * gepauzeerd is wordt de indicator en de text aangepast in het scherm
+         */
         controller.cmdPauzeSimulatie();
         if (!controller.getSimulatieLoopt())
         {
@@ -199,6 +219,13 @@ public class KnoppenPaneel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnPauzeSimulationActionPerformed
 
     private void btnNewSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewSimulationActionPerformed
+        /**
+         * Met dit event wordt een nieuwe simulatie aangemaakt. 
+         * Er wordt een dialoog geopend om de instellingen evt te wijzigen.
+         * Als er op oke in het dialoog gedrukt wordt, zal de simulatie
+         * gevreerd worden met de ingevoede gegevens. De gegeven komen uit de
+         * invoer velden of uit de XML file.
+         */
         SimulatieGegevensDialog simulatieGegevens = new SimulatieGegevensDialog(null, true);
         simulatieGegevens.setTitle("Simulatie Gegevens");
         simulatieGegevens.setVisible(true);
@@ -212,6 +239,10 @@ public class KnoppenPaneel extends javax.swing.JPanel {
 
     private void jSliderSimulationSpeedStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderSimulationSpeedStateChanged
 
+        /**
+         * Indien de slider in het scher verplaatst wordt zal de snelheid van
+         * de simulatie worden aan gepast.
+         */
        int speed = jSliderSimulationSpeed.getValue();
        controller.cmdSetSnelheid(speed);
        this.jTextField2.setText(""+speed);

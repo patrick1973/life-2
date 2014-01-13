@@ -23,13 +23,19 @@ public class WereldView extends javax.swing.JPanel implements Observer
     WereldModel wereldModel;
      
     /**
-     * Creates new form WereldView
+     * maak een nieuwe form WereldView
+     * Doordat de WerledView Observer implementeerd zal deze bij een verandering
+     * worden geupdate.
      */
     public WereldView() {
         initComponents();
         this.setBackground(Color.blue);
     }
     
+    /**
+     * Deze methode zocht voor alle teken bewerkingen. De verplaatsing van 
+     * beesten op hetscherm etc.
+     */
     @Override
     protected void paintComponent(Graphics g)
     {
@@ -135,7 +141,12 @@ public class WereldView extends javax.swing.JPanel implements Observer
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
-    
+    /**
+     * Herteken het scherm indien de update  wordt aangesproken. Deze update is 
+     * onderdeel van het MVC model.
+     * @param o
+     * @param arg 
+     */
     @Override
     public void update(Observable o, Object arg) 
     {
@@ -143,24 +154,49 @@ public class WereldView extends javax.swing.JPanel implements Observer
         this.repaint();            
     }
     
+    /**
+     * Tekenet een witte rechthoek op het scherm die een leefgebied moet
+     * voorstellen
+     * @param g
+     * @param posX (linker boven hoek van het leefgebied)
+     * @param posY (linker boven hoek van het leefgebied)
+     */
     private void tekenLeefgebied(Graphics g, int posX, int posY)
     {
         g.setColor(Color.WHITE);
         g.fillRect(posX * 4, posY * 2, 100 * 4, 200 * 2);   
     }
-    
+    /**
+     * Teken een beest op het scherm met de gegeven parameters
+     * @param g
+     * @param color
+     * @param posX
+     * @param posY 
+     */
     private void tekenBeest(Graphics g, Color color, int posX, int posY)
     {
         g.setColor(color);
         g.fillRect(posX, posY, 5, 5);
     }
     
+    /**
+     * Teken een plant op het scherm met de gegeven parameters
+     * @param g
+     * @param posX
+     * @param posY 
+     */
     private void tekenPlant(Graphics g, int posX, int posY)
     {
         g.setColor(Color.GREEN);
         g.fillRect(posX, posY, 5, 5);
     }
     
+    /**
+     * Teken een obstakel op het scherm met de gegeven parameters.
+     * @param g
+     * @param posX
+     * @param posY 
+     */
     private void tekenObstakel(Graphics g, int posX, int posY)
     {
         g.setColor(Color.BLACK);

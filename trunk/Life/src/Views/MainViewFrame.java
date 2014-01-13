@@ -5,9 +5,6 @@
 package Views;
 
 import Controllers.WereldController;
-import Enums.BeestType;
-import java.util.Observable;
-import java.util.Observer;
 import javax.swing.JFrame;
 
 /**
@@ -19,7 +16,8 @@ public class MainViewFrame extends javax.swing.JFrame {
     private WereldController wereld;
     
     /**
-     * Creates new form MainView
+     * Maakt een nieuw MainViewFrame aan.
+     * De view zal worden aan gemaakt op maximale grote van het scherm.
      */
     public MainViewFrame() {
         initComponents();
@@ -96,6 +94,7 @@ public class MainViewFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
+     * De main methode die de applica bestuurd
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -124,6 +123,7 @@ public class MainViewFrame extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new MainViewFrame().setVisible(true);
             }
