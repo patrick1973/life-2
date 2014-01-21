@@ -105,8 +105,6 @@ public class BeestTest {
         assertEquals(b.getPositie().getY(), pos.getY());
         
         assertEquals(b.getRichting(), richting);
-        
-        b.loop();
     }
     
     // Test controleert of er een beest van het type Carnivoor wordt aangemaakt
