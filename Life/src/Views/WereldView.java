@@ -33,7 +33,7 @@ public class WereldView extends javax.swing.JPanel implements Observer
     }
     
     /**
-     * Deze methode zocht voor alle teken bewerkingen. De verplaatsing van 
+     * Deze methode zorgt voor alle teken bewerkingen. De verplaatsing van 
      * beesten op hetscherm etc.
      */
     @Override
